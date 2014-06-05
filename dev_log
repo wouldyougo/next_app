@@ -52,6 +52,18 @@ git commit -m "Add a StaticPages controller"
 
 bundle exec rspec spec/requests/static_pages_spec.rb
 
+$ git add .
+$ git commit -m "Finish static pages"
+
+Затем объедините изменения с мастер веткой
+
+$ git checkout master
+$ git merge static-pages
+
+$ git push
+$ git push heroku
+
+git checkout -b filling-in-layout
 
 
 

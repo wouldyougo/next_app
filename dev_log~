@@ -43,6 +43,15 @@ rake db:rollback
 Для того чтобы откатить к самому началу (все миграции), мы можем использовать
 rake db:migrate VERSION=0
 
+rails server
+http://localhost:3000/
+http://localhost:3000/
+
+git add .
+git commit -m "Add a StaticPages controller"
+
+bundle exec rspec spec/requests/static_pages_spec.rb
+
 
 
 
