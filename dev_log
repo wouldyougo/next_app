@@ -47,6 +47,11 @@ rails server
 http://localhost:3000/
 http://localhost:3000/
 
+git add .
+git commit -m "Add a StaticPages controller"
+
+bundle exec rspec spec/requests/static_pages_spec.rb
+
 
 
 
