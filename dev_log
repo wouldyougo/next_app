@@ -65,5 +65,23 @@ $ git push heroku
 
 git checkout -b filling-in-layout
 
+следует объединить изменения с мастер-веткой:
+$ git add .
+$ git commit -m "Finish layout and routes"
+$ git checkout master
+$ git merge filling-in-layout
+
+Также вы можете отправить изменения на GitHub:
+$ git push
+Наконец, вы можете развернуть приложение на Heroku:
+$ git push heroku
+
+heroku open
+Если столкнулись с проблемами, попробуйте выполнить
+$ heroku logs
+
+
+
+
 
 
