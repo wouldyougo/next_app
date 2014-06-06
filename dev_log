@@ -1,6 +1,14 @@
+rails new sample_app
+cd '/home/user/Repositories/Ruby_Projects/sample_app'
+
 bundle install --without production
 bundle update
 bundle install
+
+bundle show [gemname]
+bundle show rails
+
+rails server
 
 #пропустил
 Листинг 3.2. Динамическая генерация секретного токена.
@@ -80,8 +88,29 @@ heroku open
 Если столкнулись с проблемами, попробуйте выполнить
 $ heroku logs
 
+git checkout master
+$ git checkout -b modeling-users
 
 
+bundle exec rake db:migrate
+bundle exec rake db:rollback
 
+rails console --sandbox
+
+user = User.new(name: "admin", email: "admin@example.com")
+
+http://www.rubular.com/
+
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
+rails generate migration add_index_to_users_email
+
+bundle exec rake db:migrate
+
+rails generate migration add_password_digest_to_users password_digest:string
+
+bundle exec rake db:migrate
+bundle exec rake test:prepare
 
 
