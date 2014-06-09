@@ -122,7 +122,7 @@ rails console
 user = User.first
 user = User.find_by(email: "example@railstutorial.org")
 user.update_attributes(name: "admin",
-                       email: "admin@example.com",
+                       email: "admin@admin.com",
                        password: "admin",
                        password_confirmation: "admin")
 
@@ -187,5 +187,28 @@ git checkout -b sign-in-out
 rails generate controller Sessions --no-test-framework
 $ rails generate integration_test authentication_pages
 
+rake routes
+
+rails generate migration add_remember_token_to_users
+
+bundle exec rake db:migrate
+bundle exec rake test:prepare
+
+# select
+sqlite3 -line db/development.sqlite3 "select * from users"
+
+#app/assets/javascripts/application.js
+
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap
+//= require turbolinks
+//= require_tree .
+
+
+git add .
+git commit -m "Finish sign in"
+git checkout master
+git merge sign-in-out
   
   
