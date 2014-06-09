@@ -176,9 +176,13 @@ config.force_ssl = true
 git commit -a -m "Add SSL in production"
 git push heroku
 
+git commit -a -m "Add files"
+
 heroku run rake db:migrate
 heroku open
 heroku logs
+
+git checkout -b sign-in-out
 
 rails generate controller Sessions --no-test-framework
 $ rails generate integration_test authentication_pages
