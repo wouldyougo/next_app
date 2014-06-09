@@ -169,5 +169,19 @@ git add .
 git commit -m "Finish user signup"
 git checkout master
 git merge sign-up
+
+config/environments/production.rb
+config.force_ssl = true
+
+git commit -a -m "Add SSL in production"
+git push heroku
+
+heroku run rake db:migrate
+heroku open
+heroku logs
+
+rails generate controller Sessions --no-test-framework
+$ rails generate integration_test authentication_pages
+
   
   
