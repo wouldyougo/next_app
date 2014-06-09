@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 #SampleApp::Application.routes.draw do
-  get 'users/new'
+  #get 'users/new'
+  resources :users
 
 #  get 'static_pages/home'
 #  get 'static_pages/help'
