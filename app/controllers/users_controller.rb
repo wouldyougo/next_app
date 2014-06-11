@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])    
   end  
 
   def new
@@ -60,18 +61,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
-    
-    # Before filters
-    def signed_in_user
-      #redirect_to signin_url, notice: "Please sign in." unless signed_in?
-      unless signed_in?
-        #store_location
-        flash[:notice] = "Необходи осуществить вход"
-        redirect_to signin_url
-      end
-      #К сожалению данная конструкция не работает для ключей :error и :success.
-    end    
-    
+       
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
@@ -79,7 +69,7 @@ class UsersController < ApplicationController
     
     def admin_user
       redirect_to(root_url) unless current_user.admin?
-    end    
+    end   
 end
 
   

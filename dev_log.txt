@@ -249,5 +249,38 @@ heroku run rake db:populate
 #Для того чтобы увидеть изменения вам возможно придется принудительно рестартовать приложение на Heroku:
 heroku restart
 
+git checkout -b user-microposts
 
+rails generate model Micropost content:string user_id:integer
 
+bundle exec rake db:migrate
+bundle exec rake test:prepare
+
+Метод	Назначение
+micropost.user	Возвращает объект User связанный с данным микросообщением.
+user.microposts	Возвращает массив микросообщений пользователя.
+user.microposts.create(arg)	Создает микросообщение (user_id = user.id).
+user.microposts.create!(arg)	Создает микросообщение (бросает исключение в случае неудачи).
+user.microposts.build(arg)	Возвращает новый объект Micropost (user_id = user.id).
+
+HTTP запрос	URL	Действие	Назначение
+POST	/microposts	create	создание нового микросообщения
+DELETE	/microposts/1	destroy	удаление микросообщения с id 1
+
+bundle exec rake db:reset
+bundle exec rake db:populate
+bundle exec rake test:prepare
+
+bundle exec rake db:postulate
+
+git add .
+git commit -m "Add user microposts"
+git checkout master
+git merge user-microposts
+git push
+
+git push heroku
+heroku pg:reset DATABASE
+heroku run rake db:migrate
+heroku run rake db:populate
+heroku run rake db:postulate

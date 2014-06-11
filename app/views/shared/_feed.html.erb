@@ -1,0 +1,16 @@
+<%#
+# To change this license header, choose License Headers in Project Properties.
+# To change this template file, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<%= "_feed.html" %>
+
+<%# if @feed_items.any? %>
+<% if !@feed_items.nil? %>
+  <%= will_paginate @feed_items %>  
+  <ol class="microposts">
+    <%= render partial: 'shared/feed_item', collection: @feed_items %>
+  </ol>  
+  <%= will_paginate @feed_items %>  
+<% end %>

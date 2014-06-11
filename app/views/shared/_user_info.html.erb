@@ -1,0 +1,21 @@
+<%#
+# To change this license header, choose License Headers in Project Properties.
+# To change this template file, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<%= "_user_info.html" %>
+
+<%= link_to gravatar_for(current_user, size: 52), current_user %>
+<h1>
+  <%= current_user.name %>
+</h1>
+<span>
+  <%= current_user.email %>
+</span>
+<span>
+  <%= link_to "view my profile", current_user %>
+</span>
+<span>
+  <%= pluralize(current_user.microposts.count, "micropost") %>
+</span>
