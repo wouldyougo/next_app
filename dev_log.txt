@@ -243,8 +243,11 @@ git merge updating-users
 
 git push heroku
 heroku pg:reset DATABASE
+heroku pg:reset DATABASE --confirm fierce-waters-1951
 heroku run rake db:migrate
 heroku run rake db:populate
 #Для того чтобы увидеть изменения вам возможно придется принудительно рестартовать приложение на Heroku:
 heroku restart
+
+
 
