@@ -281,6 +281,8 @@ git push
 
 git push heroku
 heroku pg:reset DATABASE
+heroku pg:reset DATABASE --confirm fierce-waters-1951
 heroku run rake db:migrate
 heroku run rake db:populate
 heroku run rake db:postulate
+heroku restart
