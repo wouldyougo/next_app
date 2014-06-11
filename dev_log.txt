@@ -210,5 +210,41 @@ git add .
 git commit -m "Finish sign in"
 git checkout master
 git merge sign-in-out
-  
-  
+
+Нужно лишь перейти по адресу 
+http://localhost:3000/rails/info/routes
+
+git checkout -b updating-users
+
+#id пользователя доступен в переменной params[:id]
+#Объект params в приложениях Rails содержит все аргументы, переданные в запросе браузера.    
+
+
+bundle exec rake db:reset
+bundle exec rake db:populate
+bundle exec rake test:prepare
+
+rails generate migration add_admin_to_users admin:boolean
+
+bundle exec rake db:migrate
+bundle exec rake test:prepare
+
+
+rails console
+user = User.first
+user.admin?
+user.toggle!(:admin)
+user.admin?
+
+git add .
+git commit -m "Finish user edit, update, index, and destroy actions"
+git checkout master
+git merge updating-users
+
+git push heroku
+heroku pg:reset DATABASE
+heroku run rake db:migrate
+heroku run rake db:populate
+#Для того чтобы увидеть изменения вам возможно придется принудительно рестартовать приложение на Heroku:
+heroku restart
+

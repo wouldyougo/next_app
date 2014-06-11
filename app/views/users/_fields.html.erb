@@ -1,0 +1,19 @@
+<%#
+# To change this license header, choose License Headers in Project Properties.
+# To change this template file, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<%= render 'shared/error_messages' %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.label :password_confirmation, "Confirm Password" %>
+<%= f.password_field :password_confirmation %>

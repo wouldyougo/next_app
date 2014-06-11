@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_create :create_remember_token
-
+  
+  # set per_page globally
+  #WillPaginate.per_page = 11
+  self.per_page = 10
+  
   has_secure_password
   validates :password, length: { minimum: 3, maximum: 50 } 
     
@@ -15,8 +19,7 @@ class User < ActiveRecord::Base
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }                                                          
-
+                    uniqueness: { case_sensitive: false }                 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
