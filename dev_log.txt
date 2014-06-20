@@ -1,12 +1,31 @@
 rails new sample_app
 cd '/home/user/Repositories/Ruby_Projects/sample_app'
 
+gem 'uglifier', '>= 1.3.0'
+устанавливает последнюю версию гема uglifier
+даже если его последняя версия значительно отличается от 1.3.0
+даже если это, скажем, версия 7.2.
+
+gem 'coffee-rails', '~> 4.0.0'
+устанавливает гем coffee-rails с версией не старее чем 4.0.0, но не новее чем 4.1
+
+sudo apt-get install nodejs
+
 bundle install --without production
 bundle update
 bundle install
 
 bundle show [gemname]
 bundle show rails
+
+bash --login запускает консоль Bash и перечитывает файлы персональной инициализации (типа ~/.profile)
+
+rvm install 2.1.2
+gem install rails
+
+rails -v
+ruby -v
+rvm use 2.1.2
 
 rails server
 
@@ -286,3 +305,8 @@ heroku run rake db:migrate
 heroku run rake db:populate
 heroku run rake db:postulate
 heroku restart
+
+git config --global user.email "wouldyougo@gmail.com"
+git config --global user.name "wouldyougo"
+
+

@@ -3,8 +3,11 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 %>
+<%= "_fields.html" %>
 
-<%= render 'shared/error_messages' %>
+<!--%= render 'shared/error_messages' %-->
+<!--%= render 'shared/user_error_messages' %-->
+<!--%= render 'shared/user_error_messages', object: f %-->
 
 <%= f.label :name %>
 <%= f.text_field :name %>
