@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
 #SampleApp::Application.routes.draw do
   #get 'users/new'
-  resources :users
+  #resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
 #  get 'static_pages/home'
 #  get 'static_pages/help'

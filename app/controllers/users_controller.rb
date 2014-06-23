@@ -55,6 +55,22 @@ class UsersController < ApplicationController
     end
   end
   
+  # following (читаемые)
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  # followers (читатели)
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+  
   private
     #ограничивает набор разрешенных параметров
     def user_params

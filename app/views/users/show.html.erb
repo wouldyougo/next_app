@@ -12,9 +12,15 @@
       </h1>
       <span>
         <%= @user.email %>
-      </span>      
+      </span>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
     </section>
   </aside>
+  <div class="span8">
+    <%= render 'follow_form' if signed_in? %>
+  </div>
 
   <%= "_micropost.html" %>
   <div class="span8">

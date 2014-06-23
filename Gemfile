@@ -66,7 +66,8 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'will_paginate', '>= 3.0.5'
 gem 'bootstrap-will_paginate', '>= 0.0.10'
 
-gem 'bcrypt-ruby', '>= 3.1.5'
+gem 'bcrypt'
+##gem 'bcrypt-ruby', '>= 3.1.5'
 gem 'faker', '>= 1.3.0'
 
 gem 'uglifier', '>= 2.5.1'
