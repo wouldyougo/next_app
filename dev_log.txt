@@ -25,6 +25,24 @@ http://railscasts.com/episodes/37-simple-search-form
 http://devcenter.heroku.com/articles/full-text-search
 http://pat.github.io/thinking-sphinx/
 
+Доступные адаптеры баз данных
+приведены ссылки на веб-страницы, где они могут быть найдены.
+DB2
+http://raa.ruby-lang.org/project/ruby-db2 или http://rubyforge.org/projects/rubyibm
+Firebird
+http://rubyforge.org/projects/fireruby/
+MySQL
+http://www.tmtm.org/en/mysql/ruby/
+Oracle
+http://rubyforge.org/projects/ruby-oci8
+Postgres
+https://bitbucket.org/ged/ruby-pg/wiki/Home
+Server
+https://github.com/rails-sqlserver SQL
+SQLite
+https://github.com/luislavena/sqlite3-ruby
+Адаптеры MySQL и SQLite также можно загрузить в виде RubyGems
+(соответственно, mysql2 и sqlite3).
 
 rails new sample_app
 cd '/home/user/Repositories/Ruby_Projects/sample_app'
@@ -61,22 +79,52 @@ rails s
 rails server
 http://localhost:3000/
 
+# астройка репозиория GIT
 git config --global user.email "wouldyougo@gmail.com"
 git config --global user.name "wouldyougo"
+git config --global --list
+
+#Create a new repository on the command line
+touch README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/wouldyougo/sample_app.git
+git push -u origin master
+
+#Push an existing repository from the command line
+git remote add origin https://github.com/wouldyougo/sample_app.git
+git push -u origin master
+
+###############
+git init
+git add .
+git commit -m "Initial commit"
+git commit -am "Improve the README"
+
+git remote add origin https://github.com/<username>/sample_app.git
+git remote add origin https://github.com/wouldyougo/sample_app.git
+git push -u origin master
 
 #пропустил
 Листинг 3.2. Динамическая генерация секретного токена.
 config/initializers/secret_token.rb
 
-git init
-git add .
-git commit -m "Initial commit"
+Первый шаг это регистрация на Heroku;
+после подтверждения вашего email для завершения создания вашего аккаунта,
+установите необходимый для Heroku софт с помощью Heroku Toolbelt:
+wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
-git commit -am "Improve the README"
+$ heroku login
+Enter your Heroku credentials.
+Email: wouldyougo@gmail.com
+Password:
+Could not find an existing public key.
+Would you like to generate one? [Yn]
+Generating new SSH public key.
+Uploading ssh public key /Users/adam/.ssh/id_rsa.pub
 
-git remote add origin https://github.com/<username>/sample_app.git
-git push -u origin master
-
+$ cd ~/myapp
 heroku create
 git push heroku master
 heroku run rake db:migrate
@@ -434,8 +482,8 @@ git merge following-users
 Как обычно, если хотите, вы можете также отправить ваше приложение и развернуть его на сервере:
 git push
 git push heroku
-##heroku pg:reset DATABASE
-##heroku run rake db:migrate
-##heroku run rake db:populate
+heroku pg:reset DATABASE
+heroku run rake db:migrate
+heroku run rake db:populate
+heroku run rake db:postulate
 heroku run rake db:relations
-
