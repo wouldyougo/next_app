@@ -1,8 +1,11 @@
 <% provide(:title, 'Home') %>
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<!--h1>StaticPages#home</h1-->
+<!--a href="http://railstutorial.org/">Ruby on Rails Tutorial</a-->
+<!--%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %-->
 
-<h1>Sample App</h1>
+<p>Source app/views/static_pages/home.html.erb</p>
+
+<h1><%= t('Home page') %></h1>
 
 
 <% if signed_in? %>
@@ -19,24 +22,20 @@
       </section>
     </aside>
     <div class="span8">
-      <h3>Micropost Feed</h3>
+      <h3>Список заявок</h3>
       <%= render 'shared/feed' %>
     </div>
     
   </div>
 <% else %>
   <div class="center hero-unit">
-    <h1>Welcome to the Sample App</h1>
+    <h2><%= t('start_message_1') %></h2>
 
-    <h2>
-      This is the home page for the
-      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-      sample application.
-    </h2>
-
-    <%= link_to "Sign up now!", signup_path,
-                                class: "btn btn-large btn-primary" %>
+    <%= link_to t('Sign in'), signin_path,
+                class: "btn btn-large btn-primary" %>
   </div>
-
-  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+  <div class="center hero-unit">
+    <h2><%= t('start_message_2') %></h2>
+    <%= link_to t('Sign up'), signup_path%>
+  </div>
 <% end %>

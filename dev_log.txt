@@ -79,7 +79,7 @@ rails s
 rails server
 http://localhost:3000/
 
-# астройка репозиория GIT
+# Настройка репозиория GIT
 git config --global user.email "wouldyougo@gmail.com"
 git config --global user.name "wouldyougo"
 git config --global --list
@@ -487,3 +487,10 @@ heroku run rake db:migrate
 heroku run rake db:populate
 heroku run rake db:postulate
 heroku run rake db:relations
+
+по адресу http://localhost:3000/rails/info/routes
+будет виден перечень всех ваших маршрутов
+
+В файлах application.rb по умолчанию есть инструкция,
+как добавлять локали из другой директории,
+и как настраивать другую локаль по умолчанию.
