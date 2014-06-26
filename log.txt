@@ -1,49 +1,3 @@
-https://github.com/railstutorial/sample_app_rails_4
-
-как отправлять почту с помощью Rails
-http://railscasts.com/episodes/206-action-mailer-in-rails-3
-
-отправить ссылку на форму сброса пароля
-http://railscasts.com/episodes/274-remember-me-reset-password
-
-Подтверждение регистрации
-функция должна создавать пользователей в неактивном состоянии,
-отправлять по email пользователям активационный URL,
-а затем активировать статус пользователя при посещении соответствующего URL
-https://www.ruby-toolbox.com/categories/state_machines
-http://gistflow.com/posts/679-state-machine-with-rails-basics
-
-RSS канал
-http://railscasts.com/episodes/87-generating-rss-feeds
-
-REST API
-подразумевает добавление respond_to блоков ко многим действиям Application контроллера;
-они должны отвечать на запросы для XML
-
-Поиск
-http://railscasts.com/episodes/37-simple-search-form
-http://devcenter.heroku.com/articles/full-text-search
-http://pat.github.io/thinking-sphinx/
-
-Доступные адаптеры баз данных
-приведены ссылки на веб-страницы, где они могут быть найдены.
-DB2
-http://raa.ruby-lang.org/project/ruby-db2 или http://rubyforge.org/projects/rubyibm
-Firebird
-http://rubyforge.org/projects/fireruby/
-MySQL
-http://www.tmtm.org/en/mysql/ruby/
-Oracle
-http://rubyforge.org/projects/ruby-oci8
-Postgres
-https://bitbucket.org/ged/ruby-pg/wiki/Home
-Server
-https://github.com/rails-sqlserver SQL
-SQLite
-https://github.com/luislavena/sqlite3-ruby
-Адаптеры MySQL и SQLite также можно загрузить в виде RubyGems
-(соответственно, mysql2 и sqlite3).
-
 rails new sample_app
 cd '/home/user/Repositories/Ruby_Projects/sample_app'
 cd '/home/user/Projects/sample_app'
@@ -79,10 +33,6 @@ rails s
 rails server
 http://localhost:3000/
 
-# Настройка репозиория GIT
-git config --global user.email "wouldyougo@gmail.com"
-git config --global user.name "wouldyougo"
-git config --global --list
 
 #Create a new repository on the command line
 touch README.md
@@ -104,6 +54,7 @@ git mv README.rdoc README.md
 git mv HOWTO.MD HOWTO.md
 git mv TODO.MD TODO.md
 git mv dev_log.txt log.md
+git mv log.md log.txt
 git commit -am "Improve the README"
 
 git remote add origin https://github.com/<username>/sample_app.git

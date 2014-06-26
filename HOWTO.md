@@ -18,6 +18,12 @@ git push -u origin master
 git remote add origin https://github.com/wouldyougo/next_app.git
 git push -u origin master
 
+### Настройка репозиория GIT
+git config --global user.email "user_email@gmail.com"
+git config --global user.name "wouldyougo"
+git config --global --list
+
+
 ## Ruby on Rails
 
 ###Документация:
