@@ -103,6 +103,7 @@ git commit -m "Initial commit"
 git mv README.rdoc README.md
 git mv HOWTO.MD HOWTO.md
 git mv TODO.MD TODO.md
+git mv dev_log.txt log.md
 git commit -am "Improve the README"
 
 git remote add origin https://github.com/<username>/sample_app.git
