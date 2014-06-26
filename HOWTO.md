@@ -5,24 +5,23 @@
 ##git
 
 ###Create a new repository on the command line
-
-    $ touch README.md
-    $ git init
-    $ git add README.md
-    $ git commit -m "first commit"
-    $ git remote add origin https://github.com/wouldyougo/next_app.git
-    $ git push -u origin master
-
+<tt>
+    touch README.md
+    git init
+    git add README.md
+    git commit -m "first commit"
+    git remote add origin https://github.com/wouldyougo/next_app.git
+    git push -u origin master
+</tt>
 
 ###Push an existing repository from the command line
     git remote add origin https://github.com/wouldyougo/next_app.git
     git push -u origin master
 
 ### Настройка репозиория GIT
-    $ git config --global user.email "user_email@gmail.com"
-    $ git config --global user.name "wouldyougo"
-    $ git config --global --list
-
+    git config --global user.email "user_email@gmail.com"
+    git config --global user.name "wouldyougo"
+    git config --global --list
 
 ## Ruby on Rails
 
@@ -46,8 +45,5 @@
 
 ###Перечень всех маршрутов
 по адресу
-[*http://localhost:3000/rails/info/routes*](http://localhost:3000/rails/info/routes)
+http://localhost:3000/rails/info/routes/
 будет виден перечень всех ваших маршрутов
-
-
-
