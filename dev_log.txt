@@ -488,9 +488,6 @@ heroku run rake db:populate
 heroku run rake db:postulate
 heroku run rake db:relations
 
-по адресу http://localhost:3000/rails/info/routes
-будет виден перечень всех ваших маршрутов
 
-В файлах application.rb по умолчанию есть инструкция,
-как добавлять локали из другой директории,
-и как настраивать другую локаль по умолчанию.
+git add .
+git commit -m "Начало локализации"

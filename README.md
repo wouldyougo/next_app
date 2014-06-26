@@ -1,5 +1,7 @@
 == README
 
+[*Ruby on Rails Tutorial: Learn Web Development with Rails*](http://railstutorial.org/)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
