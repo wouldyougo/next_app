@@ -15,8 +15,8 @@
 
 
 ###Push an existing repository from the command line
-    $ git remote add origin https://github.com/wouldyougo/next_app.git
-    $ git push -u origin master
+    git remote add origin https://github.com/wouldyougo/next_app.git
+    git push -u origin master
 
 ### Настройка репозиория GIT
     $ git config --global user.email "user_email@gmail.com"
