@@ -5,14 +5,12 @@
 ##git
 
 ###Create a new repository on the command line
-<tt>
     touch README.md
     git init
     git add README.md
     git commit -m "first commit"
     git remote add origin https://github.com/wouldyougo/next_app.git
     git push -u origin master
-</tt>
 
 ###Push an existing repository from the command line
     git remote add origin https://github.com/wouldyougo/next_app.git
@@ -34,9 +32,7 @@
 * ...
 
 ###Генерация случайных последовательностей:
- <tt>
- ('a'..'z').to_a.shuffle[0..7].join
- </tt>.
+    ('a'..'z').to_a.shuffle[0..7].join
 
 ###Локализация
 В файлах application.rb по умолчанию есть инструкция,
