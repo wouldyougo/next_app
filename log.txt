@@ -29,22 +29,9 @@ ruby -v
 rvm use 2.1.2
 
 rails s
-
 rails server
 http://localhost:3000/
 
-
-#Create a new repository on the command line
-touch README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/wouldyougo/sample_app.git
-git push -u origin master
-
-#Push an existing repository from the command line
-git remote add origin https://github.com/wouldyougo/sample_app.git
-git push -u origin master
 
 ###############
 git init
@@ -96,21 +83,10 @@ git checkout -b static-pages
 
 rails generate controller StaticPages home help about --no-test-framework
 
-#Пример
-$ rails generate controller FooBars baz quux
-$ rails destroy  controller FooBars baz quux
-
-rails generate model Foo bar:string baz:integer
-rails destroy model Foo
-
 rake db:migrate
 rake db:rollback
 Для того чтобы откатить к самому началу (все миграции), мы можем использовать
 rake db:migrate VERSION=0
-
-rails server
-http://localhost:3000/
-http://localhost:3000/
 
 git add .
 git commit -m "Add a StaticPages controller"
@@ -148,18 +124,8 @@ $ heroku logs
 git checkout master
 $ git checkout -b modeling-users
 
-
 bundle exec rake db:migrate
 bundle exec rake db:rollback
-
-rails console --sandbox
-
-user = User.new(name: "admin", email: "admin@example.com")
-
-http://www.rubular.com/
-
-VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
 rails generate migration add_index_to_users_email
 
@@ -170,55 +136,9 @@ rails generate migration add_password_digest_to_users password_digest:string
 bundle exec rake db:migrate
 bundle exec rake test:prepare
 
-rails console
-User.create(name: "admin", email: "admin@example.com", password: "admin", password_confirmation: "admin")
-User.create(name: "example", email: "example@railstutorial.org", password: "example", password_confirmation: "example")
-User.create(name: "test", email: "test@test.com", password: "test", password_confirmation: "test")
-
-rails console
-user = User.first
-user = User.find_by(email: "example@railstutorial.org")
-user.update_attributes(name: "admin",
-                       email: "admin@admin.com",
-                       password: "admin",
-                       password_confirmation: "admin")
-
-
 git checkout master
 git checkout -b sign-up
 
-
-#Окружения Rails
-#Дефолтным окружением для Rails консоли является development:
-  $ rails console
-  Loading development environment
-  >> Rails.env
-  => "development"
-  >> Rails.env.development?
-  => true
-  >> Rails.env.test?
-  => false
-
-  $ rails console test
-  Loading test environment
-  >> Rails.env
-  => "test"
-  >> Rails.env.test?
-  => true
-
-  $ rails server --environment production
-  $ bundle exec rake db:migrate RAILS_ENV=production
-
-  $ heroku run console
-  Ruby console for yourapp.herokuapp.com
-  >> Rails.env
-  => "production"
-  >> Rails.env.production?
-  => true
-  
-  
-  ActiveModel::SecurePassword.min_cost = true
-  
   bundle exec rake db:reset
   bundle exec rake test:prepare
   
@@ -226,9 +146,6 @@ git add .
 git commit -m "Finish user signup"
 git checkout master
 git merge sign-up
-
-config/environments/production.rb
-config.force_ssl = true
 
 git commit -a -m "Add SSL in production"
 git push heroku
@@ -251,31 +168,12 @@ rails generate migration add_remember_token_to_users
 bundle exec rake db:migrate
 bundle exec rake test:prepare
 
-# select
-sqlite3 -line db/development.sqlite3 "select * from users"
-
-#app/assets/javascripts/application.js
-
-//= require jquery
-//= require jquery_ujs
-//= require bootstrap
-//= require turbolinks
-//= require_tree .
-
-
 git add .
 git commit -m "Finish sign in"
 git checkout master
 git merge sign-in-out
 
-Нужно лишь перейти по адресу 
-http://localhost:3000/rails/info/routes
-
 git checkout -b updating-users
-
-#id пользователя доступен в переменной params[:id]
-#Объект params в приложениях Rails содержит все аргументы, переданные в запросе браузера.    
-
 
 bundle exec rake db:reset
 bundle exec rake db:populate
@@ -285,13 +183,6 @@ rails generate migration add_admin_to_users admin:boolean
 
 bundle exec rake db:migrate
 bundle exec rake test:prepare
-
-
-rails console
-user = User.first
-user.admin?
-user.toggle!(:admin)
-user.admin?
 
 git add .
 git commit -m "Finish user edit, update, index, and destroy actions"
@@ -344,7 +235,7 @@ heroku run rake db:populate
 heroku run rake db:postulate
 heroku restart
 
-git config --global user.email "wouldyougo@gmail.com"
+git config --global user.email "user.email@gmail.com"
 git config --global user.name "wouldyougo"
 
 git checkout -b following-users
@@ -417,17 +308,11 @@ HTTP request	URL	Действие	Именованный маршрут
 GET	/users/1/following	following	following_user_path(1)
 GET	/users/1/followers	followers	followers_user_path(1)
 
-Rails делает реализацию Ajax легкой, заменим
-form_for на
-form_for ..., remote: true
 
 User.first.followed_users.map { |i| i.id }
 User.first.followed_users.map(&:id)
 User.first.followed_user_ids
  => [4, 5, 6, 7, 8, 9,..., 48, 49, 50, 51]
-
-git config --global user.email "wouldyougo@gmail.com"
-git config --global user.name "wouldyougo"
 
 git add .
 git commit -m "Add user following"
@@ -445,4 +330,5 @@ heroku run rake db:relations
 
 
 git add .
-git commit -m "Начало локализации"
+git commit -am "Начало локализации"
+git push
