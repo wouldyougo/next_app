@@ -27,3 +27,10 @@ git add .
 git commit -am "Improve the README"
 git commit -am "Add files"
 git push
+
+    rails generate migration add_reader_tag_to_users reader:boolean
+    rails generate migration add_active_tag_to_users active:boolean
+    rails generate migration add_data_fields_to_users phone:integer comment:string
+    rake db:migrate
+    rake db:rollback
+    rake db:migrate

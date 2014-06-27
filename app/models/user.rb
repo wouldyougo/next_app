@@ -34,7 +34,10 @@ class User < ActiveRecord::Base
   #validates(:name, presence: true)
   #validates :name,  presence: true, length: { maximum: 50 }
   validates :name,  presence: true, length: { maximum: 50 }, uniqueness: true
-  
+
+  validates :phone, length: { maximum: 11 }
+  validates :comment, length: { maximum: 50 }
+
   #validates :email, presence: true  
   #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   #validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
@@ -72,6 +75,7 @@ class User < ActiveRecord::Base
   def follow!(other_user)
     self.relationships.create!(followed_id: other_user.id)
   end
+
   # прекратить слежение за сообщениями других пользователей,
   # нужно просто найти взаимоотношение по followed id и уничтожить его
   def unfollow!(other_user)

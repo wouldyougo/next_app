@@ -72,20 +72,29 @@ class UsersController < ApplicationController
   end
   
   private
-    #ограничивает набор разрешенных параметров
+    # ограничивает набор разрешенных параметров
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      #params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation,
+                                   :phone, :comment)
     end
-       
+
+    # проверяет что пользователь является коррекным
+    # current_user? определен в module SessionsHelper
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
-    end    
-    
+    end
+
+  # проверяет признак что пользователь является администратором
     def admin_user
       redirect_to(root_url) unless current_user.admin?
-    end   
+    end
+
+  # проверяет признак активации пользователя администратором
+    def active_user
+      redirect_to(root_url) unless current_user.active?
+    end
 end
 
   

@@ -21,3 +21,41 @@
 
 en:
   hello: "Hello world"
+
+  App name: "Заявки на подключение услуг"
+  Home page: "Главная страница приложения"
+
+  start_message_1: "Для начала работы войдите со своими учетными данными"
+  start_message_2: "Если Вы новый пользователь системой, пройдите регистрацию"
+
+  Sign up: "Регистрация"
+  Sign in: "Войти"
+  Sign out: "Выйти"
+
+  Save changes: "Сохранить"
+  Create account: "Сохранить"
+
+  Users: "Пользователи"
+  Account: "Учетная запись"
+  Profile: "Профиль"
+  Settings: "Настройки"
+
+  About: "Описание"
+  About message: "Система предназначена для учета заявок на подключение услуг"
+
+  Contact: "Контакты"
+  Home: "Главная"
+  Help: "Справка"
+
+  New user page: "Новый пользователь"
+  Edit user page: "Редактирование данных пользователя"
+  Update user page: "Обновление данных пользователя"
+
+  activerecord:
+    models:
+      user:
+    attributes:
+      user:
+        name: "Имя"
+        phone: "Телефон"
+        comment:  "Комментарий"

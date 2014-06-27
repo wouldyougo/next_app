@@ -3,11 +3,15 @@
 ##########################
 ## User
 ##########################
-* Добавить признак для роли Reader
-* Добавить поля
-    * Наименование
+* +Добавить признак для роли Reader
+    rails generate migration add_reader_tag_to_users reader:boolean
+    rails generate migration add_active_tag_to_users active:boolean
+
+* +Добавить поля
     * Телефон
     * Комментарий
+    rails generate migration add_data_fields_to_users phone:integer comment:string
+
 * Добавить форму для редактирования данных пользователя
 
 ##########################
@@ -40,6 +44,7 @@
 ## Администрирование
 ##########################
 *Добавить признак Active для активации пользователя администратором
+        rails generate migration add_active_tag_to_users active:boolean
 * Добавить форму для администратора:
     переключатель признака активации пользователя Active true false
 * Добавить форму для смены пароля пользователю
@@ -52,16 +57,16 @@
 ##########################
 * История изменения заявки
 * Лог авторизаций
-    User_ID
-    User_IP
+    * User_ID
+    * User_IP
 
 ##########################
 ## Роли
 ##########################
 * Вынести роли в отдельную таблицу
-    Admin
-    Writer
-    Reader
+    * Admin
+    * Writer
+    * Reader
 * Назначение роли для пользователя
 
 ##########################
