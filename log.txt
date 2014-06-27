@@ -22,3 +22,8 @@ GET	/users/1/followers	followers	followers_user_path(1)
 git add .
 git commit -am "Начало локализации"
 git push
+
+git add .
+git commit -am "Improve the README"
+git commit -am "Add files"
+git push
