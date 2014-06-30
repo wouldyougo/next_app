@@ -243,6 +243,14 @@ rails g migration add_passport_data_to_orders
 
 git add .
 git commit -am "Improve the README"
+git checkout -b user-orders
+
+git add .
+git commit -am "Finish user-orders"
 
 git checkout master
-git checkout -b orders
+git merge user-orders
+git push
+git push heroku
+
+git checkout master
