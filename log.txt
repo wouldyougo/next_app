@@ -34,3 +34,20 @@ git push
     rake db:migrate
     rake db:rollback
     rake db:migrate
+
+Find me in
+
+    git checkout master
+    git checkout -b reset-password
+
+rails g controller password_resets new
+rails g migration add_password_reset_to_users password_reset_token:string password_reset_sent_at:datetime
+rails g mailer user_mailer password_reset
+rake db:migrate
+
+http://localhost:3000/password_resets/LQLbZnKx2ErTeTpNJxYoWx1xJ+B2Vbm7u/mNvD7YZaw=/edit.html
+http://localhost:3000/password_resets/LQL/edit
+
+git add .
+git commit -am "password_reset"
+git push

@@ -49,7 +49,6 @@
     gem 'coffee-rails', '~> 4.0.0'
 устанавливает гем coffee-rails с версией не старее чем 4.0.0, но не новее чем 4.1
 
-
 ###Документация:
 * Please feel free to use a different markup language if you do not plan to run
   <tt>rake doc:app</tt>.
@@ -57,6 +56,12 @@
   <tt>rake doc:app</tt>.
 * Объем созданного программного кода:
     rake stats
+
+### Комментарий
+#однострочный комментарий
+=begin
+многострочный комментарий
+=end
 
 ###Локализация
 В файлах application.rb по умолчанию есть инструкция,

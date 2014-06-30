@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   #validates :name,  presence: true, length: { maximum: 50 }
   validates :name,  presence: true, length: { maximum: 50 }, uniqueness: true
 
-  validates :phone, length: { maximum: 11 }
+  validates :phone, length: { minimum: 6, maximum: 11 }, allow_blank: true
   validates :comment, length: { maximum: 50 }
 
   #validates :email, presence: true  
@@ -51,6 +51,44 @@ class User < ActiveRecord::Base
 
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  # не используется
+  def send_password_reset_v1
+    generate_reset_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
+  end
+
+  # не используется
+  def generate_reset_token_v1(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
+  end
+
+  def send_password_reset
+    # так не работает, т.к. не проходит валидация пароля
+    #self.password_reset_sent_at = Time.zone.now
+    #self.password_reset_token = User.new_reset_token
+    #self.save!
+
+    #self.update_attributes!(password_reset_sent_at: Time.zone.now,
+    #                       password_reset_token: User.new_reset_token)
+
+    # update_attribute не проводит валидацию данных
+    self.update_attribute(:password_reset_sent_at, Time.zone.now)
+    self.update_attribute(:password_reset_token, User.new_reset_token)
+
+    #отправка ссылки для password_reset
+    UserMailer.password_reset(self).deliver
+  end
+
+  # идентификатор для сброса пароля
+  def User.new_reset_token
+    #"QQQ"
+    SecureRandom.urlsafe_base64
   end
 
   def feed_v1
