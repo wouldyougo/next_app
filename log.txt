@@ -50,4 +50,6 @@ http://localhost:3000/password_resets/LQL/edit
 
 git add .
 git commit -am "password_reset"
+git checkout master
+git merge reset-password
 git push
