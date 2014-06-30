@@ -208,8 +208,10 @@ o	IPTV    Тарифный план_____________________________________________
         order_writer:               "ФИО агента, подключившего услугу"
         order_reader:               "ФИО супервайзера агента"
 
-
 rails generate model Order
+        user_id:integer
+        reader_id:integer
+
         abonent:string
         address:string
         phone:string
@@ -219,8 +221,6 @@ rails generate model Order
         contract_date:datetime
         order_status:string
 
-        user_id:integer
-        reader_id:integer
 
 rails g migration add_tariff_data_to_orders
 
@@ -254,3 +254,42 @@ git push
 git push heroku
 
 git checkout master
+
+git add .
+git commit -am "scaffold Order"
+
+rails generate scaffold Order
+        user_id:integer
+        reader_id:integer
+        order_status:string
+        contract_date:datetime
+
+        abonent:string
+        address:string
+        phone:string
+        phone_mobile:string
+
+        connection_date:datetime
+        inet_tariff_plan:string
+        inet_device_contract:string
+        inet_installment_plan:integer
+        iptv_tariff_plan:string
+        iptv_device_contract:string
+        iptv_installment_plan:integer
+
+        passport_series:string
+        passport_number:string
+        date_of_birth:datetime
+        place_of_birth:string
+        passport_registration_date:datetime
+        passport_issued_by:string
+
+rails generate scaffold Order \
+user_id:integer reader_id:integer order_status:string contract_date:datetime \
+abonent:string address:string phone:string phone_mobile:string connection_date:datetime \
+inet_tariff_plan:string inet_device_contract:string inet_installment_plan:integer \
+iptv_tariff_plan:string iptv_device_contract:string iptv_installment_plan:integer \
+passport_series:string passport_number:string passport_registration_date:datetime \
+passport_issued_by:string date_of_birth:datetime place_of_birth:string
+
+rails destroy scaffold Order

@@ -233,6 +233,7 @@ id пользователя доступен в переменной params[:id]
      admin:         boolean
      content:       string
      start_date:    datetime
+     price:         decimal, precision: 8, scale: 2
 
 ### Настройка Action Mailer для Gmail
 Action Mailer теперь использует гем Mail,
