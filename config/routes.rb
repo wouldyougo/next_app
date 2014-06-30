@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :orders
+
   # get 'users/new'
   # resources :users
   resources :users do

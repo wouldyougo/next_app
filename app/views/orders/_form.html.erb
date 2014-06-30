@@ -1,0 +1,101 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :reader_id %><br>
+    <%= f.number_field :reader_id %>
+  </div>
+  <div class="field">
+    <%= f.label :order_status %><br>
+    <%= f.text_field :order_status %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_date %><br>
+    <%= f.datetime_select :contract_date %>
+  </div>
+  <div class="field">
+    <%= f.label :abonent %><br>
+    <%= f.text_field :abonent %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_mobile %><br>
+    <%= f.text_field :phone_mobile %>
+  </div>
+  <div class="field">
+    <%= f.label :connection_date %><br>
+    <%= f.datetime_select :connection_date %>
+  </div>
+  <div class="field">
+    <%= f.label :inet_tariff_plan %><br>
+    <%= f.text_field :inet_tariff_plan %>
+  </div>
+  <div class="field">
+    <%= f.label :inet_device_contract %><br>
+    <%= f.text_field :inet_device_contract %>
+  </div>
+  <div class="field">
+    <%= f.label :inet_installment_plan %><br>
+    <%= f.number_field :inet_installment_plan %>
+  </div>
+  <div class="field">
+    <%= f.label :iptv_tariff_plan %><br>
+    <%= f.text_field :iptv_tariff_plan %>
+  </div>
+  <div class="field">
+    <%= f.label :iptv_device_contract %><br>
+    <%= f.text_field :iptv_device_contract %>
+  </div>
+  <div class="field">
+    <%= f.label :iptv_installment_plan %><br>
+    <%= f.number_field :iptv_installment_plan %>
+  </div>
+  <div class="field">
+    <%= f.label :passport_series %><br>
+    <%= f.text_field :passport_series %>
+  </div>
+  <div class="field">
+    <%= f.label :passport_number %><br>
+    <%= f.text_field :passport_number %>
+  </div>
+  <div class="field">
+    <%= f.label :passport_registration_date %><br>
+    <%= f.datetime_select :passport_registration_date %>
+  </div>
+  <div class="field">
+    <%= f.label :passport_issued_by %><br>
+    <%= f.text_field :passport_issued_by %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_birth %><br>
+    <%= f.datetime_select :date_of_birth %>
+  </div>
+  <div class="field">
+    <%= f.label :place_of_birth %><br>
+    <%= f.text_field :place_of_birth %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

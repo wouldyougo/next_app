@@ -285,11 +285,20 @@ rails generate scaffold Order
         passport_issued_by:string
 
 rails generate scaffold Order \
-user_id:integer reader_id:integer order_status:string contract_date:datetime \
-abonent:string address:string phone:string phone_mobile:string connection_date:datetime \
+user_id:integer reader_id:integer \
+order_status:string contract_date:datetime \
+abonent:string address:string \
+phone:string phone_mobile:string \
+connection_date:datetime \
 inet_tariff_plan:string inet_device_contract:string inet_installment_plan:integer \
 iptv_tariff_plan:string iptv_device_contract:string iptv_installment_plan:integer \
-passport_series:string passport_number:string passport_registration_date:datetime \
-passport_issued_by:string date_of_birth:datetime place_of_birth:string
+passport_series:string passport_number:string \
+passport_registration_date:datetime passport_issued_by:string \
+date_of_birth:datetime place_of_birth:string
 
+git add .
+git commit -am "scaffold Order"
+
+rake db:migrate
+rake db:rollback
 rails destroy scaffold Order
