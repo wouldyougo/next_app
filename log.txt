@@ -86,26 +86,29 @@ o	IPTV    Тарифный план_____________________________________________
 Заполняется в момент перевода заявки в статус "Выполнено".
 Или, при отмене заявки, заполняется ФИО диспетчера отменившего ее.
 
-1. ФИО абонента                     *   abonent
+1. ФИО абонента                         *   abonent
 2. Паспортные данные:
-    2.1. серия                      *   passport_series
-    2.2. номер                      *   passport_number
+    2.1. серия                          *   passport_series
+    2.2. номер                          *   passport_number
 
-    2.3. дата рождения              *   date_of_birth   *   birthday    *   (dob)
-    2.4. Место рождения             *   place_of_birth  *   birthplace  *   (bpl)
+    2.3. дата рождения                  *   date_of_birth   *   birthday    *   (dob)
+    2.4. Место рождения                 *   place_of_birth  *   birthplace  *   (bpl)
 
-    2.5. когда выдан                *   passport_registration_date
-    2.6. кем выдан                  *   passport_issued_by
+    2.5. когда выдан                    *   passport_registration_date
+    2.6. кем выдан                      *   passport_issued_by
 
-3. Адрес подключения                *   address
+3. Адрес подключения                    *   address
 
 4. Подключаемая услуга
-    4.1. Тарифный план ШПД          *   internet_tariff_plan
+    4.1. Тарифный план ШПД              *   tariff_plan_inet
     4.2. Оборудование: продажа/рассрочка на сколько месяцев
-                                    *   internet_device
-    4.3. Тарифный план IPTV         *   iptv_tariff_plan
+                                        *   device_contract_inet
+    4.3. Тарифный план IPTV             *   tariff_plan_iptv
     4.4. Оборудование: продажа/рассрочка на сколько месяцев
-                                    *   iptv_device
+                                        *   device_contract_iptv
+    4.5. Рассрочка на сколько месяцев   *   installment_plan_iptv
+    4.6. Рассрочка на сколько месяцев   *   installment_plan_inet
+
 5. Контактный телефон:
     5.1. телефон домашний           *   phone
     5.2. телефон сотовый            *   phone_mobile
@@ -123,35 +126,123 @@ o	IPTV    Тарифный план_____________________________________________
             * Принята
             * Отклонена
 
-Лицевой счет (если есть)            *   account
-
   activerecord:
     models:
-      user:
+      order:
     attributes:
       order:
-        abonent: "ФИО абонента"
+        abonent:                    "ФИО абонента"
 
-        passport_series:        "Серия паспорта"
-        passport_number:        "Номер паспорта"
-        date_of_birth:          "Дата рождения"
-        place_of_birth:         "Место рождения"
-        passport_registration_date:  "Когда выдан паспорт"
-        passport_issued_by:     "Кем выдан"
+        passport_series:            "Серия паспорта"
+        passport_number:            "Номер паспорта"
+        date_of_birth:              "Дата рождения"
+        place_of_birth:             "Место рождения"
+        passport_registration_date: "Когда выдан паспорт"
+        passport_issued_by:         "Кем выдан"
 
-        address:                "Адрес подключения"
-        phone:                  "Телефон домашний"
-        phone_mobile:           "Телефон сотовый"
-        account:                "Лицевой счет"
+        address:                    "Адрес подключения"
+        phone:                      "Телефон домашний"
+        phone_mobile:               "Телефон сотовый"
 
-        internet_tariff_plan:   "Тарифный план ШПД"
-        internet_device:        "Оборудование: продажа/рассрочка на сколько месяцев"
-        iptv_tariff_plan:       "Тарифный план IPTV"
-        iptv_device:            "Оборудование: продажа/рассрочка на сколько месяцев"
+        inet_tariff_plan:           "Тарифный план ШПД"
+        inet_device_contract:       "Оборудование: продажа/рассрочка/аренда"
+        inet_installment_plan:      "Рассрочка на сколько месяцев"
 
-        connection_date:        "Предполагаемая дата подключения"
-        contract_date:          "Дата продажи"
-        order_status:           "Статус заявки: Новая / Принята / Отклонена"
+        iptv_tariff_plan:           "Тарифный план IPTV"
+        iptv_device_contract:       "Оборудование: продажа/рассрочка/аренда"
+        iptv_installment_plan:      "Рассрочка на сколько месяцев"
 
-        order_writer:           "ФИО агента, подключившего услугу"
-        order_reader:           "ФИО супервайзера агента"
+        tariff_plan_inet:           "Тарифный план ШПД"
+        tariff_plan_iptv:           "Тарифный план IPTV"
+        device_contract_inet:       "Оборудование: продажа/рассрочка/аренда"
+        device_contract_iptv:       "Оборудование: продажа/рассрочка/аренда"
+        installment_plan_iptv:      "Рассрочка на сколько месяцев"
+        installment_plan_inet:      "Рассрочка на сколько месяцев"
+
+        connection_date:            "Предполагаемая дата подключения"
+        contract_date:              "Дата продажи"
+        order_status:               "Статус заявки: Новая / Принята / Отклонена"
+
+        order_writer:               "ФИО агента, подключившего услугу"
+        order_reader:               "ФИО супервайзера агента"
+
+     user_id:       integer
+     admin:         boolean
+     content:       string
+     start_date:    datetime
+
+        abonent:string
+        address:string
+        phone:string
+        phone_mobile:string
+
+        passport_series:string
+        passport_number:string
+        date_of_birth:datetime
+        place_of_birth:string
+        passport_registration_date:datetime
+        passport_issued_by:string
+
+        inet_tariff_plan:string
+        inet_device_contract:string
+        inet_installment_plan:integer
+
+        iptv_tariff_plan:string
+        iptv_device_contract:string
+        iptv_installment_plan:integer
+
+        tariff_plan_inet:string
+        tariff_plan_iptv:string
+        device_contract_inet:string
+        device_contract_iptv:string
+        installment_plan_iptv:integer
+        installment_plan_inet:integer
+
+        connection_date:datetime
+        contract_date:datetime
+        order_status:string
+
+        user_id:integer             "ID агента, подключившего услугу"
+        reader_id:integer           "ID супервайзера агента"
+
+        order_writer:               "ФИО агента, подключившего услугу"
+        order_reader:               "ФИО супервайзера агента"
+
+
+rails generate model Order
+        abonent:string
+        address:string
+        phone:string
+        phone_mobile:string
+
+        connection_date:datetime
+        contract_date:datetime
+        order_status:string
+
+        user_id:integer
+        reader_id:integer
+
+rails g migration add_tariff_data_to_orders
+
+        inet_tariff_plan:string
+        inet_device_contract:string
+        inet_installment_plan:integer
+
+        iptv_tariff_plan:string
+        iptv_device_contract:string
+        iptv_installment_plan:integer
+
+rails g migration add_passport_data_to_orders
+
+        passport_series:string
+        passport_number:string
+        date_of_birth:datetime
+        place_of_birth:string
+        passport_registration_date:datetime
+        passport_issued_by:string
+
+git add .
+git commit -am "Improve the README"
+
+git checkout master
+git checkout -b orders

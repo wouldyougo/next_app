@@ -229,9 +229,10 @@ id пользователя доступен в переменной params[:id]
     bundle exec rake test:prepare
 
 ### Базовые типы
-     user_id:integer
-     admin:boolean
-     content:string
+     user_id:       integer
+     admin:         boolean
+     content:       string
+     start_date:    datetime
 
 ### Настройка Action Mailer для Gmail
 Action Mailer теперь использует гем Mail,
