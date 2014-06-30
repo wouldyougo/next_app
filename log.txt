@@ -53,3 +53,14 @@ git commit -am "password_reset"
 git checkout master
 git merge reset-password
 git push
+
+<h1>UserMailer#password_reset</h1>
+
+<p>
+  <%= @greeting %>, find me in app/views/user_mailer/password_reset.html.erb
+</p>
+<p>
+    To reset your password, click the URL below.
+</p>
+
+

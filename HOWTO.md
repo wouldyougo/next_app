@@ -35,7 +35,7 @@
     bundle show [gemname]
     bundle show rails
 
-###rails server
+### rails server
     rails server
     http://localhost:3000/
     rails s
@@ -49,7 +49,7 @@
     gem 'coffee-rails', '~> 4.0.0'
 устанавливает гем coffee-rails с версией не старее чем 4.0.0, но не новее чем 4.1
 
-###Документация:
+### Документация:
 * Please feel free to use a different markup language if you do not plan to run
   <tt>rake doc:app</tt>.
 * Для создания документации в HTML-формате можно воспользоваться следующей командой rake:
@@ -63,12 +63,12 @@
 многострочный комментарий
 =end
 
-###Локализация
+### Локализация
 В файлах application.rb по умолчанию есть инструкция,
 как добавлять локали из другой директории,
 и как настраивать другую локаль по умолчанию.
 
-####Локализация  activerecord
+#### Локализация  activerecord
   activerecord:
     models:
       user:
@@ -78,7 +78,7 @@
         phone: "Телефон"
         comment:  "Комментарий"
 
-####Локализация actionview::helpers
+#### Локализация actionview::helpers
     <%= f.label :phone, "Телефон" %>
 если есть локализация  activerecord, тогда просто:
     <%= f.label :phone %>
@@ -119,7 +119,7 @@ id пользователя доступен в переменной params[:id]
 
 ## rails console
 
-###Генерация случайных последовательностей:
+### Генерация случайных последовательностей:
     ('a'..'z').to_a.shuffle[0..7].join
 
 ### admin?
@@ -160,17 +160,17 @@ id пользователя доступен в переменной params[:id]
     >> Rails.env.production?
     => true
 
-###rails console --sandbox
+### rails console --sandbox
     rails console --sandbox
     user = User.new(name: "admin", email: "admin@example.com")
 
-###User.create
+### User.create
     rails console
     User.create(name: "admin", email: "admin@example.com", password: "admin", password_confirmation: "admin")
     User.create(name: "example", email: "example@railstutorial.org", password: "example", password_confirmation: "example")
     User.create(name: "test", email: "test@test.com", password: "test", password_confirmation: "test")
 
-###user.update_attributes
+### user.update_attributes
     rails console
     user = User.first
     user = User.find_by(email: "example@railstutorial.org")
@@ -179,7 +179,7 @@ id пользователя доступен в переменной params[:id]
                            password: "admin",
                            password_confirmation: "admin")
 
-###rails generate
+### rails generate
     rails generate controller FooBars baz quux
     rails destroy  controller FooBars baz quux
 
@@ -233,3 +233,15 @@ id пользователя доступен в переменной params[:id]
      admin:boolean
      content:string
 
+### Настройка Action Mailer для Gmail
+Action Mailer теперь использует гем Mail,
+нужно добавить в файл config/environments/$RAILS_ENV.rb:
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        address:              'smtp.gmail.com',
+        port:                 587,
+        domain:               'example.com',
+        user_name:            '<username>',
+        password:             '<password>',
+        authentication:       'plain',
+        enable_starttls_auto: true  }

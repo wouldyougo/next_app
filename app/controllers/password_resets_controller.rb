@@ -40,7 +40,7 @@ class PasswordResetsController < ApplicationController
     if @user.password_reset_sent_at < 2.hours.ago
       redirect_to new_password_reset_path, :alert => "Ссылка для сброса пароля устарела."
     elsif @user.update_attributes(password_params)
-      @user.update_attribute(:password_reset_token, nil)
+      #@user.update_attribute(:password_reset_token, nil)
       #redirect_to root_url, :notice => "Password has been reset!"
       redirect_to signin_url, :notice => "Пароль был успешно изменен!"
     else
