@@ -255,9 +255,10 @@ id пользователя доступен в переменной params[:id]
     rails generate migration add_admin_to_users admin:boolean
     rails generate migration add_index_to_orders_user_id
 
-    add_index :orders, [:user_id, :created_at]
-    add_index :microposts, [:user_id, :created_at]
     add_index :users, :email, unique: true
+    add_index :microposts, [:user_id, :created_at]
+    add_index :orders, [:user_id, :created_at]
+    add_index :orders, [:reader_id, :updated_at]
 
     rails generate model Micropost content:string user_id:integer
     rails generate model Relationship follower_id:integer followed_id:integer

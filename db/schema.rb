@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701201719) do
+ActiveRecord::Schema.define(version: 20140701202407) do
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140701201719) do
     t.datetime "updated_at"
   end
 
+  add_index "orders", ["reader_id", "updated_at"], name: "index_orders_on_reader_id_and_updated_at"
   add_index "orders", ["user_id", "created_at"], name: "index_orders_on_user_id_and_created_at"
 
   create_table "relationships", force: true do |t|
