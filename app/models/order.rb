@@ -11,9 +11,9 @@ class Order < ActiveRecord::Base
   validates :reader_id, allow_blank: true
 
   # "ФИО абонента"
-  validates :abonent, presence: true
+  validates :abonent, presence: true, length: { maximum: 100 }
   # "Адрес подключения"
-  validates :address, presence: true
+  validates :address, presence: true, length: { maximum: 150 }
   # "Телефон домашний" и "Телефон сотовый"
   validates :phone,         allow_blank: true, length: { minimum: 6,  maximum: 11 }
   validates :phone_mobile,  allow_blank: true, length: { minimum: 10, maximum: 11 }
@@ -29,13 +29,13 @@ class Order < ActiveRecord::Base
   # "Оборудование: продажа/рассрочка/аренда"
   validates :inet_device_contract, allow_blank: true, inclusion: { in: %w(Аренда Продажа Рассрочка)}
   # "Рассрочка на сколько месяцев"
-  validates :inet_installment_plan, allow_blank: true, minimum: 0, maximum: 60
+  validates :inet_installment_plan, allow_blank: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 60}
   # "Тарифный план IPTV"
   validates :iptv_tariff_plan, allow_blank: true, length: { maximum: 100 }
   # "Оборудование: продажа/рассрочка/аренда"
   validates :iptv_device_contract, allow_blank: true, inclusion: { in: %w(Аренда Продажа Рассрочка)}
   # "Рассрочка на сколько месяцев"
-  validates :iptv_installment_plan, allow_blank: true, minimum: 0, maximum: 60
+  validates :iptv_installment_plan, allow_blank: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 60}
 
   # "Дата рождения"
   validates :date_of_birth,   allow_blank: true
