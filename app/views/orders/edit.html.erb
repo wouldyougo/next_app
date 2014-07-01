@@ -1,6 +1,11 @@
-<h1>Editing order</h1>
+<p>Find me in app/views/orders/edit.html.erb</p>
 
-<%= render 'form' %>
+<h1>Редактирование заявки</h1>
 
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to t('Show'), @order %> |
+<%= link_to t('Back'), orders_path %>
+
+<p><%= render 'form' %></p>
+
+<%= link_to t('Show'), @order %> |
+<%= link_to t('Back'), orders_path %>

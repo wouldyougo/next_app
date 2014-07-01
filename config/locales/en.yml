@@ -36,6 +36,7 @@ en:
   Save changes: "Сохранить"
   Create account: "Сохранить"
 
+  Orders: "Заявки"
   Users: "Пользователи"
   Account: "Учетная запись"
   Profile: "Профиль"
@@ -52,6 +53,11 @@ en:
   Edit user page: "Редактирование данных пользователя"
   Update user page: "Обновление данных пользователя"
 
+  Show: "Показать"
+  Back: "Вернуться"
+  Edit: "Редактировать"
+  Destroy:  "Удалить"
+
   activerecord:
     models:
       user:
@@ -60,3 +66,29 @@ en:
         name: "Имя"
         phone: "Телефон"
         comment:  "Комментарий"
+      order:
+        abonent:                    "ФИО абонента"
+        address:                    "Адрес подключения"
+        phone:                      "Телефон домашний"
+        phone_mobile:               "Телефон сотовый"
+        order_status:               "Статус заявки: Новая / Принята / Отклонена"
+        contract_date:              "Дата продажи"
+
+        connection_date:            "Предполагаемая дата подключения"
+        inet_tariff_plan:           "Тарифный план ШПД"
+        inet_device_contract:       "Оборудование: продажа/рассрочка/аренда"
+        inet_installment_plan:      "Рассрочка на сколько месяцев"
+
+        iptv_tariff_plan:           "Тарифный план IPTV"
+        iptv_device_contract:       "Оборудование: продажа/рассрочка/аренда"
+        iptv_installment_plan:      "Рассрочка на сколько месяцев"
+
+        order_writer:               "ФИО агента, подключившего услугу"
+        order_reader:               "ФИО супервайзера агента"
+
+        passport_series:            "Серия паспорта"
+        passport_number:            "Номер паспорта"
+        date_of_birth:              "Дата рождения"
+        place_of_birth:             "Место рождения"
+        passport_registration_date: "Когда выдан паспорт"
+        passport_issued_by:         "Кем выдан"

@@ -1,29 +1,37 @@
-<h1>Listing orders</h1>
+<h1>Список заявок</h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Reader</th>
-      <th>Order status</th>
-      <th>Contract date</th>
-      <th>Abonent</th>
-      <th>Address</th>
-      <th>Phone</th>
-      <th>Phone mobile</th>
-      <th>Connection date</th>
-      <th>Inet tariff plan</th>
-      <th>Inet device contract</th>
-      <th>Inet installment plan</th>
-      <th>Iptv tariff plan</th>
-      <th>Iptv device contract</th>
-      <th>Iptv installment plan</th>
-      <th>Passport series</th>
-      <th>Passport number</th>
-      <th>Passport registration date</th>
-      <th>Passport issued by</th>
-      <th>Date of birth</th>
-      <th>Place of birth</th>
+      <th>User_id</th>
+      <th>Агент</th>
+      <th>Reader_id</th>
+      <th>Проверяющий</th>
+
+      <th>Статус заявки</th>
+      <th>Дата продажи</th>
+
+      <th>ФИО абонента</th>
+      <th>Адрес подключения</th>
+      <th>Телефон домашний</th>
+      <th>Телефон сотовый</th>
+
+      <th>Дата подключения</th>
+      <th>Тарифный план ШПД</th>
+      <th>Тип договора на Оборудование ШПД</th>
+      <th>Длительность рассрочки</th>
+      <th>Тарифный план IPTV</th>
+      <th>Тип договора на Оборудование IPTV</th>
+      <th>Длительность рассрочки</th>
+      <!--
+      <th>Серия паспорта</th>
+      <th>Номер паспорта</th>
+      <th>Когда выдан</th>
+      <th>Кем выдан</th>
+      <th>Дата рождения</th>
+      <th>Место рождения</th>
+      <td><!--%= order.user_id %></td>
+      -->
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,7 +40,9 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.user_id %></td>
+        <td><%= order.user.name %></td>
         <td><%= order.reader_id %></td>
+
         <td><%= order.order_status %></td>
         <td><%= order.contract_date %></td>
         <td><%= order.abonent %></td>
@@ -46,15 +56,17 @@
         <td><%= order.iptv_tariff_plan %></td>
         <td><%= order.iptv_device_contract %></td>
         <td><%= order.iptv_installment_plan %></td>
+        <!--
         <td><%= order.passport_series %></td>
         <td><%= order.passport_number %></td>
         <td><%= order.passport_registration_date %></td>
         <td><%= order.passport_issued_by %></td>
         <td><%= order.date_of_birth %></td>
         <td><%= order.place_of_birth %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        -->
+        <td><%= link_to t('Show'), order %></td>
+        <td><%= link_to t('Edit'), edit_order_path(order) %></td>
+        <td><%= link_to t('Destroy'), order, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -63,3 +75,32 @@
 <br>
 
 <%= link_to 'New Order', new_order_path %>
+
+<!--
+order_status:               "Статус заявки: Новая / Принята / Отклонена"
+contract_date:              "Дата продажи"
+
+abonent:                    "ФИО абонента"
+address:                    "Адрес подключения"
+phone:                      "Телефон домашний"
+phone_mobile:               "Телефон сотовый"
+
+connection_date:            "Предполагаемая дата подключения"
+inet_tariff_plan:           "Тарифный план ШПД"
+inet_device_contract:       "Оборудование: продажа/рассрочка/аренда"
+inet_installment_plan:      "Рассрочка на сколько месяцев"
+
+iptv_tariff_plan:           "Тарифный план IPTV"
+iptv_device_contract:       "Оборудование: продажа/рассрочка/аренда"
+iptv_installment_plan:      "Рассрочка на сколько месяцев"
+
+passport_series:            "Серия паспорта"
+passport_number:            "Номер паспорта"
+date_of_birth:              "Дата рождения"
+place_of_birth:             "Место рождения"
+passport_registration_date: "Когда выдан паспорт"
+passport_issued_by:         "Кем выдан"
+
+order_writer:               "ФИО агента, подключившего услугу"
+order_reader:               "ФИО супервайзера агента"
+-->
