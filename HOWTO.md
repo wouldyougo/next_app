@@ -213,6 +213,11 @@ id пользователя доступен в переменной params[:id]
                            password: "admin",
                            password_confirmation: "admin")
 
+    Заметьте, что save также имеет способность пропустить валидации,
+    если как передать validate: false как аргумент. Этот способ нужно использовать осторожно.
+
+    save(validate: false)
+
 ### rails generate
     rails generate controller FooBars baz quux
     rails destroy  controller FooBars baz quux

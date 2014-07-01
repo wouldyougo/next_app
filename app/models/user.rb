@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   #has_many :microposts
   has_many :microposts, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   # Читаемые пользователи
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
