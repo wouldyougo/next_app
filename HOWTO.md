@@ -78,6 +78,40 @@
         phone: "Телефон"
         comment:  "Комментарий"
 
+#### Добавить перевод Заявки
+  activerecord:
+    models:
+      order:
+    attributes:
+      order:
+        abonent:                    "ФИО абонента"
+
+        passport_series:            "Серия паспорта"
+        passport_number:            "Номер паспорта"
+        date_of_birth:              "Дата рождения"
+        place_of_birth:             "Место рождения"
+        passport_registration_date: "Когда выдан паспорт"
+        passport_issued_by:         "Кем выдан"
+
+        address:                    "Адрес подключения"
+        phone:                      "Телефон домашний"
+        phone_mobile:               "Телефон сотовый"
+
+        inet_tariff_plan:           "Тарифный план ШПД"
+        inet_device_contract:       "Оборудование: продажа/рассрочка/аренда"
+        inet_installment_plan:      "Рассрочка на сколько месяцев"
+
+        iptv_tariff_plan:           "Тарифный план IPTV"
+        iptv_device_contract:       "Оборудование: продажа/рассрочка/аренда"
+        iptv_installment_plan:      "Рассрочка на сколько месяцев"
+
+        connection_date:            "Предполагаемая дата подключения"
+        contract_date:              "Дата продажи"
+        order_status:               "Статус заявки: Новая / Принята / Отклонена"
+
+        order_writer:               "ФИО агента, подключившего услугу"
+        order_reader:               "ФИО супервайзера агента"
+
 #### Локализация actionview::helpers
     <%= f.label :phone, "Телефон" %>
 если есть локализация  activerecord, тогда просто:
@@ -247,3 +281,21 @@ Action Mailer теперь использует гем Mail,
         password:             '<password>',
         authentication:       'plain',
         enable_starttls_auto: true  }
+
+### scaffold Order
+
+    rails generate scaffold Order \
+    user_id:integer reader_id:integer \
+    order_status:string contract_date:datetime \
+    abonent:string address:string \
+    phone:string phone_mobile:string \
+    connection_date:datetime \
+    inet_tariff_plan:string inet_device_contract:string inet_installment_plan:integer \
+    iptv_tariff_plan:string iptv_device_contract:string iptv_installment_plan:integer \
+    passport_series:string passport_number:string \
+    passport_registration_date:datetime passport_issued_by:string \
+    date_of_birth:datetime place_of_birth:string
+
+    rake db:migrate
+    rake db:rollback
+    rails destroy scaffold Order
