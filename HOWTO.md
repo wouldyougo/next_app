@@ -266,6 +266,7 @@ id пользователя доступен в переменной params[:id]
     bundle exec rake db:postulate
     bundle exec rake db:relations
     bundle exec rake test:prepare
+    bundle exec rake db:user_orders
 
 ### Базовые типы
      user_id:       integer
