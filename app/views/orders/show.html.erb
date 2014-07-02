@@ -65,7 +65,7 @@
 
     <br>
     <p>
-      <strong>Данные подключения:</strong>
+      <strong>Подключение:</strong>
     </p>
 <p>
   <!--strong>Connection date:</strong-->
@@ -137,6 +137,9 @@
 
 <br>
 <p>
+  <strong>Дополнительные данные:</strong>
+</p>
+<p>
   <!--strong>Reader:</strong-->
   <strong>created_at:</strong>
   <%= @order.created_at %>
@@ -155,72 +158,72 @@
   <%= @order.reader_id %>
 </p>
 
-<br>
 <!--%= link_to 'Принять', '#' %-->
 <!--%= link_to 'Отклонить', '#' %-->
 <p>
   <strong>current_user.reader:</strong>
   <%= current_user.reader %>
-</p>
 <p>
+</p>
   <strong>current_user.admin:</strong>
   <%= current_user.admin %>
 </p>
+
 <br>
-
-<p>
-  <% if (current_user.reader && @order.order_status == "Новая") ||
-          (current_user.admin  && @order.order_status == "Отклонена")%>
-      <!--%= f.text_area :content, value: "new micropost!" %-->
-      <%= form_for(@order) do |f| %>
-        <div class="field">
-          <!--%= f.label :reader_id %-->
-          <!--%= f.number_field :reader_id, value: current_user.id, readonly: true %-->
-          <%= f.hidden_field :reader_id, value: current_user.id, readonly: true %>
-        </div>
-        <div class="field">
-          <!--%= f.label :order_status %-->
-          <!--%= f.text_field :order_status, value: "Принята", readonly: true %-->
-          <%= f.hidden_field :order_status, value: "Принята", readonly: true %>
-        </div>
-        <div class="field">
-          <!--%= f.label :contract_date %-->
-          <!--%= f.datetime_select :contract_date, value: Time.now %-->
-          <!--%= f.text_field :contract_date, value: Time.now %-->
-          <%= f.hidden_field :contract_date, value: Time.now %>
-        </div>
-        <div class="actions">
-          <!--%= f.submit %-->
-          <%= f.submit "Принять", class: "btn btn-large btn-primary" %>
-        </div>
-      <% end %>
-  <% end %>
-
-  <% if (current_user.reader && @order.order_status == "Новая") ||
-        (current_user.admin  && @order.order_status == "Принята")%>
-      <br>
-      <%= form_for(@order) do |f| %>
-          <div class="field">
-            <!--%= f.label :reader_id %-->
-            <!--%= f.number_field :reader_id, value: current_user.id, readonly: true %-->
-            <%= f.hidden_field :reader_id, value: current_user.id, readonly: true %>
-          </div>
-          <div class="field">
-            <!--%= f.label :order_status %-->
-            <!--%= f.text_field :order_status, value: "Принята", readonly: true %-->
-            <%= f.hidden_field :order_status, value: "Отклонена", readonly: true %>
-          </div>
-          <div class="field">
-            <!--%= f.label :contract_date %-->
-            <!--%= f.datetime_select :contract_date, value: Time.now %-->
-            <!--%= f.text_field :contract_date, value: Time.now %-->
-            <%= f.hidden_field :contract_date, value: Time.now %>
-          </div>
-          <div class="actions">
-            <!--%= f.submit %-->
-            <%= f.submit "Отклонить", class: "btn btn-large btn-primary" %>
-          </div>
-      <% end %>
+<div class="row">
+  <div class="span2">
+    <% if (current_user.reader && @order.order_status == "Новая") ||
+            (current_user.admin  && @order.order_status == "Отклонена")%>
+        <!--%= f.text_area :content, value: "new micropost!" %-->
+        <%= form_for(@order) do |f| %>
+            <div class="field">
+              <!--%= f.label :reader_id %-->
+              <!--%= f.number_field :reader_id, value: current_user.id, readonly: true %-->
+              <%= f.hidden_field :reader_id, value: current_user.id, readonly: true %>
+            </div>
+            <div class="field">
+              <!--%= f.label :order_status %-->
+              <!--%= f.text_field :order_status, value: "Принята", readonly: true %-->
+              <%= f.hidden_field :order_status, value: "Принята", readonly: true %>
+            </div>
+            <div class="field">
+              <!--%= f.label :contract_date %-->
+              <!--%= f.datetime_select :contract_date, value: Time.now %-->
+              <!--%= f.text_field :contract_date, value: Time.now %-->
+              <%= f.hidden_field :contract_date, value: Time.now %>
+            </div>
+            <div class="actions">
+              <!--%= f.submit %-->
+              <%= f.submit "Принять", class: "btn btn-large btn-primary" %>
+            </div>
+        <% end %>
     <% end %>
-</p>
-
+  </div>
+  <div class="span2">
+    <% if (current_user.reader && @order.order_status == "Новая") ||
+            (current_user.admin  && @order.order_status == "Принята")%>
+        <%= form_for(@order) do |f| %>
+            <div class="field">
+              <!--%= f.label :reader_id %-->
+              <!--%= f.number_field :reader_id, value: current_user.id, readonly: true %-->
+              <%= f.hidden_field :reader_id, value: current_user.id, readonly: true %>
+            </div>
+            <div class="field">
+              <!--%= f.label :order_status %-->
+              <!--%= f.text_field :order_status, value: "Принята", readonly: true %-->
+              <%= f.hidden_field :order_status, value: "Отклонена", readonly: true %>
+            </div>
+            <div class="field">
+              <!--%= f.label :contract_date %-->
+              <!--%= f.datetime_select :contract_date, value: Time.now %-->
+              <!--%= f.text_field :contract_date, value: Time.now %-->
+              <%= f.hidden_field :contract_date, value: Time.now %>
+            </div>
+            <div class="actions">
+              <!--%= f.submit %-->
+              <%= f.submit "Отклонить", class: "btn btn-large btn-primary" %>
+            </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>

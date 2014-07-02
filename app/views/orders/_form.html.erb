@@ -15,111 +15,225 @@
     </div>
   <% end %>
 
-  <div>
+  <!--div>
     <strong>current_user_id: <%= current_user.id %></strong>
     <strong>order.user_id: <%= @order.user_id %></strong>
-  </div>
+  </div-->
 
+    <br>
+    <p>
+      <strong>Статус заявки:</strong>
+    </p>
+    <div class="row">
+      <div class="span5">
+        <p>
+          <strong>Агент:</strong>
+          <%= @order.user.name %>
+        </p>
+        <div class="field">
+          <%= f.label :order_status %>
+          <!--%= f.text_field :order_status %-->
+          <!--%= f.text_field :order_status, value: "Новая", readonly: true %-->
+          <%= f.text_field :order_status, readonly: true %>
+        </div>
+      </div>
+      <div class="span1">
+      </div>
+      <div class="span5">
+        <p>
+          <strong>Проверяющий:</strong>
+          <%= reader_name @order %>
+        </p>
+        <div class="field">
+          <%= f.label :contract_date %>
+          <!--%= f.datetime_select :contract_date %-->
+          <!--%= f.date_select :contract_date %-->
+          <!--%= f.date_select :contract_date, value: nil, readonly: true %-->
+          <%= f.text_field :contract_date, readonly: true %>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="row">
+      <div class="span5">...
+      </div>
+      <div class="span1">...
+      </div>
+      <div class="span5">...
+      </div>
+    </div>
+    -->
+  <br>
+  <p>
+      <strong>Данные абонента:</strong>
+  </p>
+    <div class="row">
+      <div class="span5">
+        <div class="field">
+          <%= f.label :abonent %>
+          <%= f.text_field :abonent %>
+        </div>
+        <div class="field">
+          <%= f.label :address %>
+          <%= f.text_field :address %>
+        </div>
+      </div>
+      <div class="span1">
+      </div>
+      <div class="span5">
+        <div class="field">
+          <%= f.label :phone %>
+          <%= f.text_field :phone %>
+        </div>
+        <div class="field">
+          <%= f.label :phone_mobile %>
+          <%= f.text_field :phone_mobile %>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <!--%= f.number_field :user_id %-->
-    <!--%= f.number_field :user_id, value: current_user.id, readonly: true %-->
-    <%= f.number_field :user_id, readonly: true %>
-  </div>
-  <div class="field">
-    <%= f.label :reader_id %>
-    <!--%= f.number_field :reader_id %-->
-    <!--%= f.number_field :reader_id, value: nil, readonly: true %-->
-    <%= f.number_field :reader_id, readonly: true %>
-  </div>
-  <div class="field">
-    <%= f.label :order_status %>
-    <!--%= f.text_field :order_status %-->
-    <!--%= f.text_field :order_status, value: "Новая", readonly: true %-->
-    <%= f.text_field :order_status, readonly: true %>
-  </div>
-  <div class="field">
-    <%= f.label :contract_date %>
-    <!--%= f.datetime_select :contract_date %-->
-    <!--%= f.date_select :contract_date %-->
-    <!--%= f.date_select :contract_date, value: nil, readonly: true %-->
-    <%= f.text_field :contract_date, value: nil, readonly: true %>
-  </div>
-  <div class="field">
-    <%= f.label :abonent %>
-    <%= f.text_field :abonent %>
-  </div>
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_mobile %>
-    <%= f.text_field :phone_mobile %>
-  </div>
+  <br>
+  <p>
+    <strong>Данные подключения:</strong>
+  </p>
   <div class="field">
     <%= f.label :connection_date %>
     <!--%= f.datetime_select :connection_date %-->
     <!--%= f.date_select :connection_date %-->
     <%= f.text_field :connection_date %>
   </div>
-  <div class="field">
-    <%= f.label :inet_tariff_plan %>
-    <%= f.text_field :inet_tariff_plan %>
-  </div>
-  <div class="field">
-    <%= f.label :inet_device_contract %>
-    <%= f.text_field :inet_device_contract %>
-  </div>
-  <div class="field">
-    <%= f.label :inet_installment_plan %>
-    <%= f.number_field :inet_installment_plan %>
-  </div>
-  <div class="field">
-    <%= f.label :iptv_tariff_plan %>
-    <%= f.text_field :iptv_tariff_plan %>
-  </div>
-  <div class="field">
-    <%= f.label :iptv_device_contract %>
-    <%= f.text_field :iptv_device_contract %>
-  </div>
-  <div class="field">
-    <%= f.label :iptv_installment_plan %>
-    <%= f.number_field :iptv_installment_plan %>
-  </div>
-  <div class="field">
-    <%= f.label :passport_series %>
-    <%= f.text_field :passport_series %>
-  </div>
-  <div class="field">
-    <%= f.label :passport_number %>
-    <%= f.text_field :passport_number %>
-  </div>
-  <div class="field">
-    <%= f.label :passport_registration_date %>
-    <!--%= f.datetime_select :passport_registration_date %-->
-    <!--%= f.date_select :passport_registration_date %-->
-    <%= f.text_field :passport_registration_date %>
-  </div>
-  <div class="field">
-    <%= f.label :passport_issued_by %>
-    <%= f.text_field :passport_issued_by %>
-  </div>
-  <div class="field">
-    <%= f.label :date_of_birth %>
-    <!--%= f.datetime_select :date_of_birth %-->
-    <!--%= f.date_select :date_of_birth %-->
-    <%= f.text_field :date_of_birth, value: nil %>
-  </div>
-  <div class="field">
-    <%= f.label :place_of_birth %>
-    <%= f.text_field :place_of_birth %>
-  </div>
+    <div class="row">
+      <div class="span5">
+        <div class="field">
+          <%= f.label :inet_tariff_plan %>
+          <%= f.text_field :inet_tariff_plan %>
+        </div>
+        <div class="field">
+          <%= f.label :inet_device_contract %>
+          <!--%= f.text_field :inet_device_contract %-->
+          <!--%= f.text_field :inet_device_contract %-->
+          <!--Аренда Продажа Рассрочка-->
+          <%= f.select(:inet_device_contract, [['нет', nil], ['аренда', 'Аренда'], ['продажа', 'Продажа'], ['рассрочка', 'Рассрочка']]) %>
+        </div>
+        <div class="field">
+          <%= f.label :inet_installment_plan %>
+          <%= f.number_field :inet_installment_plan %>
+        </div>
+      </div>
+      <div class="span1">
+      </div>
+      <div class="span5">
+        <div class="field">
+          <%= f.label :iptv_tariff_plan %>
+          <%= f.text_field :iptv_tariff_plan %>
+        </div>
+        <div class="field">
+          <%= f.label :iptv_device_contract %>
+          <!--%= f.text_field :iptv_device_contract %-->
+          <!--Аренда Продажа Рассрочка-->
+          <%= f.select(:iptv_device_contract, [['нет', nil], ['аренда', 'Аренда'], ['продажа', 'Продажа'], ['рассрочка', 'Рассрочка']]) %>
+        </div>
+        <div class="field">
+          <%= f.label :iptv_installment_plan %>
+          <%= f.number_field :iptv_installment_plan %>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <p>
+      <strong>Паспортные данные:</strong>
+    </p>
+    <div class="row">
+      <div class="span5">
+        <div class="field">
+          <%= f.label :passport_series %>
+          <%= f.text_field :passport_series %>
+        </div>
+        <div class="field">
+          <%= f.label :passport_registration_date %>
+          <!--%= f.datetime_select :passport_registration_date %-->
+          <!--%= f.date_select :passport_registration_date %-->
+          <%= f.text_field :passport_registration_date %>
+        </div>
+        <div class="field">
+          <%= f.label :passport_issued_by %>
+          <%= f.text_field :passport_issued_by %>
+        </div>
+      </div>
+      <div class="span1">
+      </div>
+      <div class="span5">
+        <div class="field">
+          <%= f.label :passport_number %>
+          <%= f.text_field :passport_number %>
+        </div>
+        <div class="field">
+          <%= f.label :date_of_birth %>
+          <!--%= f.datetime_select :date_of_birth %-->
+          <!--%= f.date_select :date_of_birth %-->
+          <%= f.text_field :date_of_birth, value: nil %>
+        </div>
+        <div class="field">
+          <%= f.label :place_of_birth %>
+          <%= f.text_field :place_of_birth %>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <p>
+      <strong>Дополнительные данные:</strong>
+    </p>
+    <div class="row">
+      <div class="span5">
+        <div class="field">
+          <%= f.label :created_at %>
+          <%= f.text_field :created_at, readonly: true %>
+        </div>
+        <div class="field">
+          <%= f.label :updated_at %>
+          <%= f.text_field :updated_at, readonly: true %>
+        </div>
+      </div>
+      <div class="span1">
+      </div>
+      <div class="span5">
+        <div class="field">
+          <%= f.label :user_id %>
+          <!--%= f.number_field :user_id %-->
+          <!--%= f.number_field :user_id, value: current_user.id, readonly: true %-->
+          <%= f.number_field :user_id, readonly: true %>
+        </div>
+        <div class="field">
+          <%= f.label :reader_id %>
+          <!--%= f.number_field :reader_id %-->
+          <!--%= f.number_field :reader_id, value: nil, readonly: true %-->
+          <%= f.number_field :reader_id, readonly: true %>
+        </div>
+      </div>
+    </div>
+
+
+    <p>
+      <!--strong>Reader:</strong-->
+      <strong>created_at:</strong>
+      <%= @order.created_at %>
+    </p>
+    <p>
+      <!--strong>Reader:</strong-->
+      <strong>updated_at:</strong>
+      <%= @order.updated_at %>
+    </p>
+    <p>
+      <strong>Order_id:</strong>
+      <%= @order.id %>
+      <strong>User_id:</strong>
+      <%= @order.user_id %>
+      <strong>Reader_id:</strong>
+      <%= @order.reader_id %>
+    </p>
+
   <div class="actions">
     <!--%= f.submit %-->
     <%= f.submit t('Save changes'), class: "btn btn-large btn-primary" %>
