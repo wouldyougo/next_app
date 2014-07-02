@@ -1,7 +1,11 @@
 <%= form_for(@order) do |f| %>
+
   <% if @order.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <div class="alert alert-error">
+        Форма содержит ошибки: <%= @order.errors.count %> шт.
+        <!--%= pluralize(@order.errors.count, "error") %-->
+      </div>
 
       <ul>
       <% @order.errors.full_messages.each do |message| %>
@@ -11,21 +15,36 @@
     </div>
   <% end %>
 
+  <div>
+    <strong>current_user_id: <%= current_user.id %></strong>
+    <strong>order.user_id: <%= @order.user_id %></strong>
+  </div>
+
+
   <div class="field">
     <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
+    <!--%= f.number_field :user_id %-->
+    <!--%= f.number_field :user_id, value: current_user.id, readonly: true %-->
+    <%= f.number_field :user_id, readonly: true %>
   </div>
   <div class="field">
     <%= f.label :reader_id %>
-    <%= f.number_field :reader_id %>
+    <!--%= f.number_field :reader_id %-->
+    <!--%= f.number_field :reader_id, value: nil, readonly: true %-->
+    <%= f.number_field :reader_id, readonly: true %>
   </div>
   <div class="field">
     <%= f.label :order_status %>
-    <%= f.text_field :order_status %>
+    <!--%= f.text_field :order_status %-->
+    <!--%= f.text_field :order_status, value: "Новая", readonly: true %-->
+    <%= f.text_field :order_status, readonly: true %>
   </div>
   <div class="field">
     <%= f.label :contract_date %>
-    <%= f.datetime_select :contract_date %>
+    <!--%= f.datetime_select :contract_date %-->
+    <!--%= f.date_select :contract_date %-->
+    <!--%= f.date_select :contract_date, value: nil, readonly: true %-->
+    <%= f.text_field :contract_date, value: nil, readonly: true %>
   </div>
   <div class="field">
     <%= f.label :abonent %>
@@ -45,7 +64,9 @@
   </div>
   <div class="field">
     <%= f.label :connection_date %>
-    <%= f.datetime_select :connection_date %>
+    <!--%= f.datetime_select :connection_date %-->
+    <!--%= f.date_select :connection_date %-->
+    <%= f.text_field :connection_date %>
   </div>
   <div class="field">
     <%= f.label :inet_tariff_plan %>
@@ -81,7 +102,9 @@
   </div>
   <div class="field">
     <%= f.label :passport_registration_date %>
-    <%= f.datetime_select :passport_registration_date %>
+    <!--%= f.datetime_select :passport_registration_date %-->
+    <!--%= f.date_select :passport_registration_date %-->
+    <%= f.text_field :passport_registration_date %>
   </div>
   <div class="field">
     <%= f.label :passport_issued_by %>
@@ -89,7 +112,9 @@
   </div>
   <div class="field">
     <%= f.label :date_of_birth %>
-    <%= f.datetime_select :date_of_birth %>
+    <!--%= f.datetime_select :date_of_birth %-->
+    <!--%= f.date_select :date_of_birth %-->
+    <%= f.text_field :date_of_birth, value: nil %>
   </div>
   <div class="field">
     <%= f.label :place_of_birth %>

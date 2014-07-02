@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701202407) do
+ActiveRecord::Schema.define(version: 20140702142553) do
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140701202407) do
   create_table "orders", force: true do |t|
     t.integer  "user_id"
     t.integer  "reader_id"
-    t.string   "order_status"
+    t.string   "order_status",               default: "Новая"
     t.datetime "contract_date"
     t.string   "abonent"
     t.string   "address"
