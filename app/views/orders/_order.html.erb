@@ -1,0 +1,56 @@
+<%#
+# To change this license header, choose License Headers in Project Properties.
+# To change this template file, choose Tools | Templates
+# and open the template in the editor.
+%>
+<p>Find me in app/views/orders/_order.html.erb</p>
+
+<li>
+  <span class="content">
+  <% if current_user?(order.user)%>
+      <td><%= link_to t('Show'), order %></td>
+      <td><%= link_to t('Edit'), edit_order_path(order) %></td>
+      <td><%= link_to t('Destroy'), order, method: :delete,
+                      data: { confirm: 'Вы уверены?' } %></td>
+  <% end %>
+  </span>
+
+  <span class="content">
+    <strong>Статус заявки:</strong>
+    <%= order.order_status %>
+    <strong>Агент:</strong>
+    <%= order.user.name %>
+  </span>
+  <span class="content">
+    <strong>Проверяющий:</strong>
+    <%= reader_name order %>
+    <strong>Дата продажи:</strong>
+    <%= order.contract_date %>
+  </span>
+  <span class="content">
+    <strong>Дата подключения:</strong>
+    <%= order.connection_date %>
+  </span>
+  <span class="content">
+    <strong>ФИО абонента:</strong>
+    <%= order.abonent %>
+    <strong>Адрес подключения:</strong>
+    <%= order.address %>
+  </span>
+
+  <span class="timestamp">
+    <strong>created_at:</strong>
+    <%= order.created_at %>
+    <strong>updated_at:</strong>
+    <%= order.updated_at %>
+  </span>
+
+  <span class="timestamp">
+    <strong>Order_id:</strong>
+    <%= order.id %>
+    <strong>User_id:</strong>
+    <%= order.user_id %>
+    <strong>Reader_id:</strong>
+    <%= order.reader_id %>
+  </span>
+</li>

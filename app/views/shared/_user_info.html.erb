@@ -22,8 +22,18 @@
 </p>
 
 <p>
+  <strong>current_user.reader:</strong>
+  <%= current_user.reader %>
+</p>
+<p>
+  <strong>current_user.admin:</strong>
+  <%= current_user.admin %>
+</p>
+
+<p>
   <strong>Профиль:</strong>
-  <%= link_to "Посмотреть профиль", current_user %>
+  <!--%= link_to "Посмотреть профиль", current_user %-->
+  <%= link_to "Редактировать профиль", edit_user_path(current_user) %>
 </p>
 
 <p>
