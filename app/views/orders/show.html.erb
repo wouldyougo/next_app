@@ -1,17 +1,4 @@
 <p id="notice"><%= notice %></p>
-<%= form_for(@order) do |f| %>
-
-<p>
-  <!--strong>User:</strong-->
-  <strong>User_id:</strong>
-  <%= @order.user_id %>
-</p>
-
-<p>
-  <!--strong>Reader:</strong-->
-  <strong>Reader_id:</strong>
-  <%= @order.reader_id %>
-</p>
 
 <p>
   <!--strong>User:</strong-->
@@ -151,7 +138,54 @@
   <strong>Место рождения:</strong>
   <%= @order.place_of_birth %>
 </p>
-<% end %>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<br>
+<p>
+  <!--strong>User:</strong-->
+  <strong>Order_id:</strong>
+  <%= @order.id %>
+</p>
+
+<p>
+  <!--strong>User:</strong-->
+  <strong>User_id:</strong>
+  <%= @order.user_id %>
+</p>
+
+<p>
+  <!--strong>Reader:</strong-->
+  <strong>Reader_id:</strong>
+  <%= @order.reader_id %>
+</p>
+
+<p>
+  <!--strong>Reader:</strong-->
+  <strong>created_at:</strong>
+  <%= @order.created_at %>
+</p>
+<p>
+  <!--strong>Reader:</strong-->
+  <strong>updated_at:</strong>
+  <%= @order.updated_at %>
+</p>
+
+<br>
+<p>
+  <% if current_user.admin || current_user.reader%>
+      <%= link_to 'Принять', '#' %>
+    | <%= link_to 'Отклонить', '#' %>
+  <% end %>
+</p>
+
+<p>
+  <%= link_to t('Back'), orders_path%>
+  <!--, class: "btn btn-large btn-primary"-->
+  <% if current_user?(@order.user) || current_user.admin || current_user.reader%>
+      | <%= link_to t('Edit'), edit_order_path(@order) %>
+  <% end %>
+  <% if current_user?(@order.user) || current_user.admin %>
+      | <%= link_to t('Destroy'), @order, method: :delete,
+                    data: { confirm: 'Вы уверены?' } %>
+  <% end %>
+</p>
+

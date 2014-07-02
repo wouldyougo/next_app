@@ -24,8 +24,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       #запись cookies в sign_in в модуле SessionsHelper 
-      sign_in @user 
-      flash[:success] = "Welcome to the Sample App!"
+      sign_in @user
+      #flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome!"
       redirect_to @user
     else
       #flash[:error] = "Возникла ошибка при создании нового пользователя."
@@ -35,7 +36,8 @@ class UsersController < ApplicationController
   
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted."
+    #flash[:success] = "User deleted."
+    flash[:success] = "Пользователь удален."
     redirect_to users_url
   end  
 
@@ -48,7 +50,8 @@ class UsersController < ApplicationController
     #заменено на before_action :correct_user
     #@user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+      #flash[:success] = "Profile updated"
+      flash[:success] = "Профиль обновлен."
       redirect_to @user
     else
       #flash[:error] = "Возникла ошибка при редактировании пользователя."

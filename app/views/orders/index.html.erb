@@ -7,26 +7,25 @@
 <table>
   <thead>
     <tr>
-      <th>User_id</th>
-      <th>Reader_id</th>
-
       <th>Агент</th>
       <th>Проверяющий</th>
       <th>Статус заявки</th>
-
       <th>Дата продажи</th>
+
       <th>ФИО абонента</th>
       <th>Адрес подключения</th>
       <th>Телефон домашний</th>
       <th>Телефон сотовый</th>
 
       <th>Дата подключения</th>
+      <!--
       <th>Тарифный план ШПД</th>
       <th>Договор на Оборудование</th>
       <th>Длительность рассрочки</th>
       <th>Тарифный план IPTV</th>
       <th>Договор на Оборудование</th>
       <th>Длительность рассрочки</th>
+      -->
       <!--
       <th>Серия паспорта</th>
       <th>Номер паспорта</th>
@@ -36,31 +35,34 @@
       <th>Место рождения</th>
       <td><!--%= order.user_id %></td>
       -->
+      <th>Order_id</th>
+      <th>User_id</th>
+      <th>Reader_id</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.user_id %></td>
-        <td><%= order.reader_id %></td>
-
         <td><%= order.user.name %></td>
         <td><%= order.reader.name %></td>
         <td><%= order.order_status %></td>
-
         <td><%= order.contract_date %></td>
+
         <td><%= order.abonent %></td>
         <td><%= order.address %></td>
         <td><%= order.phone %></td>
         <td><%= order.phone_mobile %></td>
         <td><%= order.connection_date %></td>
+        <!--
         <td><%= order.inet_tariff_plan %></td>
         <td><%= order.inet_device_contract %></td>
         <td><%= order.inet_installment_plan %></td>
         <td><%= order.iptv_tariff_plan %></td>
         <td><%= order.iptv_device_contract %></td>
         <td><%= order.iptv_installment_plan %></td>
+        -->
         <!--
         <td><%= order.passport_series %></td>
         <td><%= order.passport_number %></td>
@@ -69,9 +71,19 @@
         <td><%= order.date_of_birth %></td>
         <td><%= order.place_of_birth %></td>
         -->
+        <td><%= order.id %></td>
+        <td><%= order.user_id %></td>
+        <td><%= order.reader_id %></td>
+
         <td><%= link_to t('Show'), order %></td>
-        <td><%= link_to t('Edit'), edit_order_path(order) %></td>
-        <td><%= link_to t('Destroy'), order, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+
+        <% if current_user?(order.user) || current_user.admin || current_user.reader%>
+            <td><%= link_to t('Edit'), edit_order_path(order) %></td>
+        <% end %>
+        <% if current_user?(order.user) || current_user.admin %>
+            <td><%= link_to t('Destroy'), order, method: :delete,
+                                                 data: { confirm: 'Вы уверены?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
