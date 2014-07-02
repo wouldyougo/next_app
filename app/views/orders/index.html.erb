@@ -1,16 +1,20 @@
+<% provide(:title, 'All orders') %>
+
 <h1>Список заявок</h1>
+
+<%= will_paginate %>
 
 <table>
   <thead>
     <tr>
       <th>User_id</th>
-      <th>Агент</th>
       <th>Reader_id</th>
+
+      <th>Агент</th>
       <th>Проверяющий</th>
-
       <th>Статус заявки</th>
-      <th>Дата продажи</th>
 
+      <th>Дата продажи</th>
       <th>ФИО абонента</th>
       <th>Адрес подключения</th>
       <th>Телефон домашний</th>
@@ -18,10 +22,10 @@
 
       <th>Дата подключения</th>
       <th>Тарифный план ШПД</th>
-      <th>Тип договора на Оборудование ШПД</th>
+      <th>Договор на Оборудование</th>
       <th>Длительность рассрочки</th>
       <th>Тарифный план IPTV</th>
-      <th>Тип договора на Оборудование IPTV</th>
+      <th>Договор на Оборудование</th>
       <th>Длительность рассрочки</th>
       <!--
       <th>Серия паспорта</th>
@@ -35,15 +39,16 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.user_id %></td>
-        <td><%= order.user.name %></td>
         <td><%= order.reader_id %></td>
 
+        <td><%= order.user.name %></td>
+        <td><%= order.reader.name %></td>
         <td><%= order.order_status %></td>
+
         <td><%= order.contract_date %></td>
         <td><%= order.abonent %></td>
         <td><%= order.address %></td>
@@ -71,6 +76,8 @@
     <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @users %>
 
 <br>
 

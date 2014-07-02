@@ -1,109 +1,157 @@
 <p id="notice"><%= notice %></p>
+<%= form_for(@order) do |f| %>
 
 <p>
-  <strong>User:</strong>
+  <!--strong>User:</strong-->
+  <strong>User_id:</strong>
   <%= @order.user_id %>
 </p>
 
 <p>
-  <strong>Reader:</strong>
+  <!--strong>Reader:</strong-->
+  <strong>Reader_id:</strong>
   <%= @order.reader_id %>
 </p>
 
 <p>
-  <strong>Order status:</strong>
+  <!--strong>User:</strong-->
+  <strong>Агент:</strong>
+  <%= @order.user.name %>
+</p>
+
+<p>
+  <!--strong>Reader:</strong-->
+  <strong>Проверяющий:</strong>
+  <%= @order.reader.name %>
+</p>
+
+<p>
+  <!--strong>Order status:</strong-->
+  <strong>Статус заявки:</strong>
   <%= @order.order_status %>
 </p>
 
 <p>
-  <strong>Contract date:</strong>
+  <!--strong>Contract date:</strong-->
+  <strong>Дата продажи:</strong>
   <%= @order.contract_date %>
 </p>
 
+    <br>
+    <p>
+      <strong>Данные абонента:</strong>
+    </p>
 <p>
-  <strong>Abonent:</strong>
+  <!--strong>Abonent:</strong-->
+  <!--strong><%= t(:abonent) %></strong-->
+  <strong>ФИО абонента:</strong>
   <%= @order.abonent %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <!--strong>Address:</strong-->
+  <strong>Адрес подключения:</strong>
   <%= @order.address %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <!--strong>Phone:</strong-->
+  <strong>Телефон домашний:</strong>
   <%= @order.phone %>
 </p>
 
 <p>
-  <strong>Phone mobile:</strong>
+  <!--strong>Phone mobile:</strong-->
+  <strong>Телефон сотовый:</strong>
   <%= @order.phone_mobile %>
 </p>
 
+    <br>
+    <p>
+      <strong>Данные подключения:</strong>
+    </p>
 <p>
-  <strong>Connection date:</strong>
+  <!--strong>Connection date:</strong-->
+  <strong>Дата подключения:</strong>
   <%= @order.connection_date %>
 </p>
 
 <p>
-  <strong>Inet tariff plan:</strong>
+  <!--strong>Inet tariff plan:</strong-->
+  <strong>Тарифный план ШПД:</strong>
   <%= @order.inet_tariff_plan %>
 </p>
 
 <p>
-  <strong>Inet device contract:</strong>
+  <!--strong>Inet device contract:</strong-->
+  <strong>Договор на Оборудование ШПД:</strong>
   <%= @order.inet_device_contract %>
 </p>
 
 <p>
-  <strong>Inet installment plan:</strong>
+  <!--strong>Inet installment plan:</strong-->
+  <strong>Длительность рассрочки:</strong>
   <%= @order.inet_installment_plan %>
 </p>
 
 <p>
-  <strong>Iptv tariff plan:</strong>
+  <!--strong>Iptv tariff plan:</strong-->
+  <strong>Тарифный план IPTV:</strong>
   <%= @order.iptv_tariff_plan %>
 </p>
 
 <p>
-  <strong>Iptv device contract:</strong>
+  <!--strong>Iptv device contract:</strong-->
+  <strong>Договор на Оборудование IPTV:</strong>
   <%= @order.iptv_device_contract %>
 </p>
 
 <p>
-  <strong>Iptv installment plan:</strong>
+  <!--strong>Iptv installment plan:</strong-->
+  <strong>Длительность рассрочки:</strong>
   <%= @order.iptv_installment_plan %>
 </p>
 
 <p>
-  <strong>Passport series:</strong>
+  <!--strong>Passport series:</strong-->
+  <strong>Серия паспорта:</strong>
   <%= @order.passport_series %>
 </p>
 
+    <br>
+    <p>
+      <strong>Паспортные данные:</strong>
+    </p>
 <p>
-  <strong>Passport number:</strong>
+  <!--strong>Passport number:</strong-->
+  <strong>Номер паспорта:</strong>
   <%= @order.passport_number %>
 </p>
 
 <p>
-  <strong>Passport registration date:</strong>
+  <!--strong>Passport registration date:</strong-->
+  <strong>Когда выдан:</strong>
   <%= @order.passport_registration_date %>
 </p>
 
 <p>
-  <strong>Passport issued by:</strong>
+  <!--strong>Passport issued by:</strong-->
+  <strong>Кем выдан:</strong>
   <%= @order.passport_issued_by %>
 </p>
 
 <p>
-  <strong>Date of birth:</strong>
+  <!--strong>Date of birth:</strong-->
+  <strong>Дата рождения:</strong>
   <%= @order.date_of_birth %>
 </p>
 
 <p>
-  <strong>Place of birth:</strong>
+  <!--strong>Place of birth:</strong-->
+  <strong>Место рождения:</strong>
   <%= @order.place_of_birth %>
 </p>
+<% end %>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
