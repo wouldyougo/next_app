@@ -165,3 +165,30 @@ git push
 git push heroku
 ---------------------------
 git stash
+
+    bundle exec rake db:reset
+    bundle exec rake db:populate
+    bundle exec rake db:postulate
+    bundle exec rake db:relations
+    bundle exec rake test:prepare
+    bundle exec rake db:user_orders
+
+
+<%= form_for(current_user.relationships.build(followed_id: @user.id),
+             remote: true) do |f| %>
+    <div><%= f.hidden_field :followed_id %></div>
+    <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+<% end %>
+
+<%= form_for(current_user.relationships.find_by(followed_id: @user),
+             html: { method: :delete },
+             remote: true) do |f| %>
+    <%= f.submit "Unfollow", class: "btn btn-large" %>
+<% end %>
+
+Добавить сообщение, что пользователь не активирован администратором
+
+Добавить в список ордеров
+order.reader_name
+вместо
+<td><%= order.reader.name %></td>

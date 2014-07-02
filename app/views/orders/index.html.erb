@@ -46,7 +46,9 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.user.name %></td>
-        <td><%= order.reader.name %></td>
+        <!--td><%= order.reader %></td-->
+        <td><%= reader_name order %></td>
+
         <td><%= order.order_status %></td>
         <td><%= order.contract_date %></td>
 

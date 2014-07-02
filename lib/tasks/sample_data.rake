@@ -38,9 +38,25 @@ def make_users
                        email: "admin@admin.com",
                        password: "admin",
                        password_confirmation: "admin",
+                       active: true,
                        admin: true)
 
-  100.times do |n|
+  reader = User.create!(name: "reader",
+                       email: "reader@reader.com",
+                       password: "reader",
+                       password_confirmation: "reader",
+                       active: true,
+                       admin: false,
+                       reader: true)
+
+  reader = User.create!(name: "user",
+                        email: "user@user.com",
+                        password: "user",
+                        password_confirmation: "user",
+                        active: true,
+                        admin: false,
+                        reader: false)
+  20.times do |n|
     name  = Faker::Name.name
     email = "example-#{n+1}@railstutorial.org"
     password  = "password"
@@ -55,7 +71,7 @@ def make_microposts
   #limit: 6 не заработало
   #users = User.all(limit: 6)
   users = User.all
-  5.times do
+  3.times do
     content = Faker::Lorem.sentence(5)
     users.each { |user| user.microposts.create!(content: content) }
   end
@@ -75,9 +91,9 @@ end
 def make_user_orders
   #users = User.all
   users_all = User.all
-  users = users_all[1..10]
+  users = users_all[0..10]
 
-  21.times do
+  11.times do
     reader_id = nil
     #reader_id = 1
     #abonent = "Example User"
@@ -87,10 +103,11 @@ def make_user_orders
     phone = "4742381381"
     phone_mobile  = "9059059050"
     # Новая / Принята / Отклонена
-    #order_status = "Новая"
-    order_status = "Принята"
+    order_status = "Новая"
+    #order_status = "Принята"
     #order_status = nil
-    contract_date = Time.now
+    #contract_date = Time.now
+    contract_date = nil
 
     #connection_date = Date.today
     connection_date = Time.now

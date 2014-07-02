@@ -1,8 +1,8 @@
 class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :reader, class_name: "User", foreign_key: "reader_id"
-
-  default_scope -> { order('created_at DESC') }
+  default_scope -> { order('created_at') }
+  #default_scope -> { order('created_at DESC') }
   #validates :content, presence: true, length: { maximum: 140 }
   #validates :name,  presence: true, length: { maximum: 50 }, uniqueness: true
   #validates :phone, length: { minimum: 6, maximum: 11 }, allow_blank: true

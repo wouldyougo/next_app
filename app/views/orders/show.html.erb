@@ -1,4 +1,16 @@
-<p id="notice"><%= notice %></p>
+<!--p id="notice"><%= notice %></p-->
+
+<p>
+  <%= link_to t('Back'), orders_path%>
+  <!--, class: "btn btn-large btn-primary"-->
+  <% if current_user?(@order.user) || current_user.admin || current_user.reader%>
+      | <%= link_to t('Edit'), edit_order_path(@order) %>
+  <% end %>
+  <% if current_user?(@order.user) || current_user.admin %>
+      | <%= link_to t('Destroy'), @order, method: :delete,
+                    data: { confirm: 'Вы уверены?' } %>
+  <% end %>
+</p>
 
 <p>
   <!--strong>User:</strong-->
@@ -7,15 +19,16 @@
 </p>
 
 <p>
-  <!--strong>Reader:</strong-->
-  <strong>Проверяющий:</strong>
-  <%= @order.reader.name %>
-</p>
-
-<p>
   <!--strong>Order status:</strong-->
   <strong>Статус заявки:</strong>
   <%= @order.order_status %>
+</p>
+
+<p>
+  <!--strong>Reader:</strong-->
+  <!--%= @order.reader.name %-->
+  <strong>Проверяющий:</strong>
+  <%= reader_name @order %>
 </p>
 
 <p>
@@ -45,9 +58,6 @@
   <!--strong>Phone:</strong-->
   <strong>Телефон домашний:</strong>
   <%= @order.phone %>
-</p>
-
-<p>
   <!--strong>Phone mobile:</strong-->
   <strong>Телефон сотовый:</strong>
   <%= @order.phone_mobile %>
@@ -73,11 +83,8 @@
   <!--strong>Inet device contract:</strong-->
   <strong>Договор на Оборудование ШПД:</strong>
   <%= @order.inet_device_contract %>
-</p>
-
-<p>
   <!--strong>Inet installment plan:</strong-->
-  <strong>Длительность рассрочки:</strong>
+  <!--strong>Длительность рассрочки:</strong-->
   <%= @order.inet_installment_plan %>
 </p>
 
@@ -91,25 +98,20 @@
   <!--strong>Iptv device contract:</strong-->
   <strong>Договор на Оборудование IPTV:</strong>
   <%= @order.iptv_device_contract %>
+  <!--strong>Iptv installment plan:</strong-->
+  <!--strong>Длительность рассрочки:</strong-->
+  <%= @order.iptv_installment_plan %>
 </p>
 
+<br>
 <p>
-  <!--strong>Iptv installment plan:</strong-->
-  <strong>Длительность рассрочки:</strong>
-  <%= @order.iptv_installment_plan %>
+  <strong>Паспортные данные:</strong>
 </p>
 
 <p>
   <!--strong>Passport series:</strong-->
   <strong>Серия паспорта:</strong>
   <%= @order.passport_series %>
-</p>
-
-    <br>
-    <p>
-      <strong>Паспортные данные:</strong>
-    </p>
-<p>
   <!--strong>Passport number:</strong-->
   <strong>Номер паспорта:</strong>
   <%= @order.passport_number %>
@@ -119,9 +121,6 @@
   <!--strong>Passport registration date:</strong-->
   <strong>Когда выдан:</strong>
   <%= @order.passport_registration_date %>
-</p>
-
-<p>
   <!--strong>Passport issued by:</strong-->
   <strong>Кем выдан:</strong>
   <%= @order.passport_issued_by %>
@@ -131,33 +130,12 @@
   <!--strong>Date of birth:</strong-->
   <strong>Дата рождения:</strong>
   <%= @order.date_of_birth %>
-</p>
-
-<p>
   <!--strong>Place of birth:</strong-->
   <strong>Место рождения:</strong>
   <%= @order.place_of_birth %>
 </p>
 
 <br>
-<p>
-  <!--strong>User:</strong-->
-  <strong>Order_id:</strong>
-  <%= @order.id %>
-</p>
-
-<p>
-  <!--strong>User:</strong-->
-  <strong>User_id:</strong>
-  <%= @order.user_id %>
-</p>
-
-<p>
-  <!--strong>Reader:</strong-->
-  <strong>Reader_id:</strong>
-  <%= @order.reader_id %>
-</p>
-
 <p>
   <!--strong>Reader:</strong-->
   <strong>created_at:</strong>
@@ -168,24 +146,74 @@
   <strong>updated_at:</strong>
   <%= @order.updated_at %>
 </p>
-
-<br>
 <p>
-  <% if current_user.admin || current_user.reader%>
-      <%= link_to 'Принять', '#' %>
-    | <%= link_to 'Отклонить', '#' %>
-  <% end %>
+  <strong>Order_id:</strong>
+  <%= @order.id %>
+  <strong>User_id:</strong>
+  <%= @order.user_id %>
+  <strong>Reader_id:</strong>
+  <%= @order.reader_id %>
 </p>
 
+<br>
+<!--%= link_to 'Принять', '#' %-->
+<!--%= link_to 'Отклонить', '#' %-->
+
+<br>
+
 <p>
-  <%= link_to t('Back'), orders_path%>
-  <!--, class: "btn btn-large btn-primary"-->
-  <% if current_user?(@order.user) || current_user.admin || current_user.reader%>
-      | <%= link_to t('Edit'), edit_order_path(@order) %>
+  <% if (current_user.reader && @order.order_status == "Новая") ||
+          (current_user.admin  && @order.order_status == "Отклонена")%>
+      <!--%= f.text_area :content, value: "new micropost!" %-->
+      <%= form_for(@order) do |f| %>
+        <div class="field">
+          <!--%= f.label :reader_id %-->
+          <!--%= f.number_field :reader_id, value: current_user.id, readonly: true %-->
+          <%= f.hidden_field :reader_id, value: current_user.id, readonly: true %>
+        </div>
+        <div class="field">
+          <!--%= f.label :order_status %-->
+          <!--%= f.text_field :order_status, value: "Принята", readonly: true %-->
+          <%= f.hidden_field :order_status, value: "Принята", readonly: true %>
+        </div>
+        <div class="field">
+          <!--%= f.label :contract_date %-->
+          <!--%= f.datetime_select :contract_date, value: Time.now %-->
+          <!--%= f.text_field :contract_date, value: Time.now %-->
+          <%= f.hidden_field :contract_date, value: Time.now %>
+        </div>
+        <div class="actions">
+          <!--%= f.submit %-->
+          <%= f.submit "Принять", class: "btn btn-large btn-primary" %>
+        </div>
+      <% end %>
   <% end %>
-  <% if current_user?(@order.user) || current_user.admin %>
-      | <%= link_to t('Destroy'), @order, method: :delete,
-                    data: { confirm: 'Вы уверены?' } %>
-  <% end %>
+
+  <% if (current_user.reader && @order.order_status == "Новая") ||
+        (current_user.admin  && @order.order_status == "Принята")%>
+      <br>
+      <%= form_for(@order) do |f| %>
+          <div class="field">
+            <!--%= f.label :reader_id %-->
+            <!--%= f.number_field :reader_id, value: current_user.id, readonly: true %-->
+            <%= f.hidden_field :reader_id, value: current_user.id, readonly: true %>
+          </div>
+          <div class="field">
+            <!--%= f.label :order_status %-->
+            <!--%= f.text_field :order_status, value: "Принята", readonly: true %-->
+            <%= f.hidden_field :order_status, value: "Отклонена", readonly: true %>
+          </div>
+          <div class="field">
+            <!--%= f.label :contract_date %-->
+            <!--%= f.datetime_select :contract_date, value: Time.now %-->
+            <!--%= f.text_field :contract_date, value: Time.now %-->
+            <%= f.hidden_field :contract_date, value: Time.now %>
+          </div>
+          <div class="actions">
+            <!--%= f.submit %-->
+            <%= f.submit "Отклонить", class: "btn btn-large btn-primary" %>
+          </div>
+      <% end %>
+    <% end %>
 </p>
 
