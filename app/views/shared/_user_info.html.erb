@@ -3,19 +3,36 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 %>
+<p>Find me in app/views/shared/_user_info.html.erb</p>
 
-<%= "_user_info.html" %>
+<!--%= link_to gravatar_for(current_user, size: 52), current_user %-->
 
-<%= link_to gravatar_for(current_user, size: 52), current_user %>
-<h1>
+<h3>
+  <%= "Данные оператора" %>
+</h3>
+
+<p>
+  <strong>Оператор:</strong>
   <%= current_user.name %>
-</h1>
-<span>
+</p>
+
+<p>
+  <strong>email:</strong>
   <%= current_user.email %>
-</span>
+</p>
+
+<p>
+  <strong>Профиль:</strong>
+  <%= link_to "Посмотреть профиль", current_user %>
+</p>
+
+<p>
+  <strong>Создано заявок:</strong>
+  <%= current_user.orders.count %>
+</p>
+
+
+
 <span>
-  <%= link_to "view my profile", current_user %>
-</span>
-<span>
-  <%= pluralize(current_user.microposts.count, "micropost") %>
+  <!--%= pluralize(current_user.microposts.count, "micropost") %-->
 </span>

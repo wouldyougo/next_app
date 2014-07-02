@@ -77,8 +77,9 @@
         <td><%= order.user_id %></td>
         <td><%= order.reader_id %></td>
 
-        <td><%= link_to t('Show'), order %></td>
-
+        <% if current_user?(order.user) || current_user.admin || current_user.reader%>
+            <td><%= link_to t('Show'), order %></td>
+        <% end %>
         <% if current_user?(order.user) || current_user.admin || current_user.reader%>
             <td><%= link_to t('Edit'), edit_order_path(order) %></td>
         <% end %>
