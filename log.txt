@@ -174,9 +174,6 @@ git stash
     bundle exec rake db:user_orders
 
 
-Добавить сообщение, что пользователь не активирован администратором
-Убрать Показать не свои заявки
-
 rails g migration change_column_default_to_orders
 
     change_column_default :orders, :order_status, "Новая"
@@ -185,3 +182,9 @@ git add .
 git commit -am "change_column"
 
 
+
+
+
+--Сделать разные списки заявок для двух ролей
+--    список заявок для читателя
+--Сделать разные начальные страницы для двух ролей

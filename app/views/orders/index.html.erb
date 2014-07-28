@@ -1,5 +1,13 @@
 <% provide(:title, 'All orders') %>
 
+<!--%= link_to 'Создать заявку', new_order_path %-->
+<br>
+<% if !current_user.reader%>
+    <%= link_to 'Создать заявку', new_order_path, class: "btn btn-large btn-primary" %>
+<% end %>
+<br>
+<br>
+
 <h1>Список заявок</h1>
 
 <%= will_paginate %>
@@ -97,7 +105,6 @@
 <br>
 
 <!--%= link_to 'New Order', new_order_path %-->
-<%= link_to 'Создать заявку', new_order_path %>
 
 <!--
 order_status:               "Статус заявки: Новая / Принята / Отклонена"

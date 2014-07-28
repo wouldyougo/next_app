@@ -26,8 +26,16 @@
       </section>
     <!--/aside-->
     <!--div class="span8"-->
+
+    <!--%= link_to 'Создать заявку', new_order_path %-->
+    <!--%= link_to 'Создать заявку', new_order_path, class: "btn btn-large btn-primary" %-->
     <br>
-    <%= link_to 'Создать заявку', new_order_path %>
+    <% if !current_user.reader%>
+        <%= link_to 'Создать заявку', new_order_path, class: "btn btn-large btn-primary" %>
+    <% end %>
+    <br>
+    <br>
+
     <div>
       <h3>Список заявок</h3>
       <!--%= render 'shared/feed' %-->
@@ -39,18 +47,8 @@
           </ol>
           <%= will_paginate @user_orders %>
       <% end %>
-
-      <!--p>Find me in app/views/users/show.html.erb</p-->
-      <!--
-      <% if @user_microposts.any? %>
-          <h3>Microposts (<%= @user_microposts.count %>)</h3>
-          <ol class="microposts">
-            <%= render @user_microposts %>
-          </ol>
-          <%= will_paginate @user_microposts %>
-      <% end %>
-      -->
     </div>
+
   </div>
 <% else %>
   <div class="center hero-unit">

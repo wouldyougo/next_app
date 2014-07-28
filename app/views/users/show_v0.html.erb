@@ -1,0 +1,50 @@
+<% provide(:title, @user.name) %>
+<!--
+<%= @user.name %>, <%= @user.email %>
+-->
+<p>Find me in app/views/users/show.html.erb</p>
+
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+      <span>
+        <%= @user.email %>
+      </span>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="span8">
+    <%= render 'follow_form' if signed_in? %>
+  </div>
+
+  <div class="span8">
+    <p>Find me in app/views/users/show.html.erb</p>
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <p>Find me in app/views/users/show.html.erb</p>
+  <h3>Список заявок</h3>
+  <!--%= render 'shared/feed' %-->
+  <% if @user_orders.any? %>
+      <!--h3>user_orders (<%= @user_orders.count %>)</h3-->
+      <%= will_paginate @user_orders %>
+      <ol class="orders">
+        <%= render @user_orders %>
+      </ol>
+      <%= will_paginate @user_orders %>
+  <% end %>
+</div>

@@ -5,11 +5,29 @@
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to t('Home'), root_path %></li>
-          <li><%= link_to t('Help'), help_path %></li>
 
           <% if signed_in? %>
             <li><%= link_to t('Users'), users_path %></li>
-            <li><%= link_to t('Orders'), orders_path %></li>
+            <!--li><!--%= link_to t('Orders'), orders_path %></li-->
+
+              <li id="fat-menu" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <%=t('Orders')%> <b class="caret"></b>
+                </a>
+
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'Список заявок', orders_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to 'Новые', created_orders_path %></li>
+                  <li><%= link_to 'Принятые', accepted_orders_path %></li>
+                  <li><%= link_to 'Отклоненные', rejected_orders_path %></li>
+                  <li><%= link_to 'Все заявки', all_orders_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to 'Создать заявку', new_order_path %></li>
+                </ul>
+              </li>
+
+
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%=t('Account')%> <b class="caret"></b>
@@ -20,6 +38,7 @@
                 <li><%= link_to t('Settings'), edit_user_path(current_user) %></li>
               </ul>
             </li>
+
             <li>
               <%= link_to t('Sign out'), signout_path, method: "delete" %>
             </li>            

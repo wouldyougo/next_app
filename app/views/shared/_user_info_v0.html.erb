@@ -6,7 +6,6 @@
 <p>Find me in app/views/shared/_user_info.html.erb</p>
 
 <!--%= link_to gravatar_for(current_user, size: 52), current_user %-->
-<% @user ||= current_user %>
 
 <h3>
   <%= "Данные оператора" %>
@@ -14,34 +13,32 @@
 
 <p>
   <strong>Оператор:</strong>
-  <%= @user.name %>
+  <%= current_user.name %>
 </p>
 
 <p>
   <strong>email:</strong>
-  <%= @user.email %>
+  <%= current_user.email %>
 </p>
 
 <p>
-  <strong>reader:</strong>
-  <%= @user.reader %>
+  <strong>current_user.reader:</strong>
+  <%= current_user.reader %>
 </p>
 <p>
-  <strong>admin:</strong>
-  <%= @user.admin %>
+  <strong>current_user.admin:</strong>
+  <%= current_user.admin %>
 </p>
 
-<% if current_user?(@user)%>
-    <p>
-      <strong>Профиль:</strong>
-      <!--%= link_to "Посмотреть профиль", current_user %-->
-      <%= link_to "Редактировать профиль", edit_user_path(@user) %>
-    </p>
-<% end %>
+<p>
+  <strong>Профиль:</strong>
+  <!--%= link_to "Посмотреть профиль", current_user %-->
+  <%= link_to "Редактировать профиль", edit_user_path(current_user) %>
+</p>
 
 <p>
   <strong>Создано заявок:</strong>
-  <%= @user.orders.count %>
+  <%= current_user.orders.count %>
 </p>
 
 

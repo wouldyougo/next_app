@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  resources :orders
+  resources :orders do
+    collection do
+      get :all,
+          :created,
+          :accepted,
+          :rejected,
+          :recent
+    end
+  end
 
   # get 'users/new'
   # resources :users
@@ -7,6 +15,7 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
+    # resources :orders
   end
 
   resources :sessions, only: [:new, :create, :destroy]
@@ -19,8 +28,11 @@ Rails.application.routes.draw do
 #  get 'static_pages/help'
 #  get 'static_pages/about'
 #  get "static_pages/contact"  
-  
+
   root  'static_pages#home'
+#  root  'orders#index'
+# http://localhost:3000/rails/info/routes/
+
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'  

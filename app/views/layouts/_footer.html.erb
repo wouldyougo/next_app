@@ -2,12 +2,13 @@
 <!--a href="http://railstutorial.org/">Rails Tutorial</a-->
 
 <footer class="footer">
-  <small>
+  <!--small>
     Разработано с использованием Ruby on Rails
     <a href="http://rubyonrails.org/">http://rubyonrails.org</a>
-  </small>
+  </small-->
   <nav>
     <ul>
+      <li><%= link_to t('Help'),    help_path %></li>
       <li><%= link_to t('About'),   about_path %></li>
       <li><%= link_to t('Contact'), contact_path %></li>
     </ul>

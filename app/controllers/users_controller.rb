@@ -5,16 +5,17 @@ class UsersController < ApplicationController
  
   def index
     #@users = User.all
-    @users = User. paginate(page: params[:page])
+    @users = User.paginate(page: params[:page])
     #@users = User. paginate(page: params[:page], :per_page => 50)
     #@users = User. paginate(page: params[:page], :per_page => 10).order('name DESC')
   end
   
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
     #Проверить зачем здесь это:
-    @orders = @user.orders.paginate(page: params[:page])
+    #@microposts = @user.microposts.paginate(page: params[:page])
+    #@orders = @user.orders.paginate(page: params[:page])
+    @user_orders = @user.orders.paginate(page: params[:page])
   end  
 
   def new

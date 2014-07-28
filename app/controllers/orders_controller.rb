@@ -1,12 +1,58 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
+  #Новая
+  #Отклонена
+  #Принята
+
   # GET /orders
   # GET /orders.json
   def index
     #@orders = Order.all
-    @orders = Order. paginate(page: params[:page])
+    if current_user.reader || current_user.admin
+      created
+    else
+      @orders = Order.all
+      @orders = @orders.where(user_id: current_user)
+      @orders = @orders.paginate(page: params[:page])
+    end
   end
+
+  def all             #Все
+    #@orders = Order. paginate(page: params[:page])
+    @orders = Order.all
+    @orders = @orders.paginate(page: params[:page])
+    render :index
+  end
+
+  def created		    #Новые
+    @orders = Order.all
+    #@orders = @orders.where("order_status = 'Новая'")
+    @orders = @orders.where(order_status: "Новая")
+    @orders = @orders.paginate(page: params[:page])
+    render :index
+  end
+
+  def accepted		    #Принятые
+    @orders = Order.all
+    @orders = @orders.where(order_status: "Принята")
+    @orders = @orders.paginate(page: params[:page])
+    render :index
+  end
+
+  def rejected        #Отклоненные
+    @orders = Order.all
+    @orders = @orders.where(order_status: "Отклонена")
+    @orders = @orders.paginate(page: params[:page])
+    render :index
+  end
+
+  def recent        #Последние
+    @orders = Order.all
+    @orders = @orders.paginate(page: params[:page])
+    render :index
+  end
+
 
   # GET /orders/1
   # GET /orders/1.json
