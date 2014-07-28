@@ -10,49 +10,73 @@ class OrdersController < ApplicationController
   def index
     #@orders = Order.all
     if current_user.reader || current_user.admin
-      created
+      #если читатель
+      @orders = created
     else
-      @orders = Order.all
-      @orders = @orders.where(user_id: current_user)
+      #если писатель
+      @orders = list
       @orders = @orders.paginate(page: params[:page])
     end
   end
+  def list
+    if current_user.reader || current_user.admin
+      #если читатель
+      @orders = reader_list
+    else
+      #если писатель
+      @orders = writer_list
+    end
+  end
 
-  def all             #Все
+  def writer_list             #свои
+    @orders = Order.all
+    @orders = @orders.where(user_id: current_user)
+    #@orders = @orders.paginate(page: params[:page])
+    #render :index
+  end
+
+  def reader_list             #Все
+    #@orders = Order. paginate(page: params[:page])
+    @orders = Order.all
+    #@orders = @orders.paginate(page: params[:page])
+    #render :index
+  end
+
+  #Все
+  def all
     #@orders = Order. paginate(page: params[:page])
     @orders = Order.all
     @orders = @orders.paginate(page: params[:page])
     render :index
   end
 
-  def created		    #Новые
-    @orders = Order.all
+  #Новые
+  def created
+    @orders = list
+    #@orders = Order.all
     #@orders = @orders.where("order_status = 'Новая'")
     @orders = @orders.where(order_status: "Новая")
     @orders = @orders.paginate(page: params[:page])
     render :index
   end
 
-  def accepted		    #Принятые
-    @orders = Order.all
+  #Принятые
+  def accepted
+    @orders = list
+    #@orders = Order.all
     @orders = @orders.where(order_status: "Принята")
     @orders = @orders.paginate(page: params[:page])
     render :index
   end
 
-  def rejected        #Отклоненные
-    @orders = Order.all
+  #Отклоненные
+  def rejected
+    @orders = list
+    #@orders = Order.all
     @orders = @orders.where(order_status: "Отклонена")
     @orders = @orders.paginate(page: params[:page])
     render :index
   end
-
-  def recent        #Последние
-    @orders = Order.all
-    @orders = @orders.paginate(page: params[:page])
-    render :index
-  end
-
 
   # GET /orders/1
   # GET /orders/1.json

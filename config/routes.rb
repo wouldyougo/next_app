@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   resources :orders do
     collection do
-      get :all,
-          :created,
+      get :created,
           :accepted,
           :rejected,
-          :recent
+          :all
+          #:recent
     end
   end
 
