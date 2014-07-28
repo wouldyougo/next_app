@@ -1,4 +1,6 @@
-<p>Find me in app/views/static_pages/help.html.erb</p>
+<% if find_me? %>
+    <p>Find me in app/views/static_pages/help.html.erb</p>
+<% end %>
 
 <% provide(:title, 'Help') %>
 <h1><%= t('Help') %></h1>

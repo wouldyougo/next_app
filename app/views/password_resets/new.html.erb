@@ -1,4 +1,6 @@
-<p>Find me in app/views/password_resets/new.html.erb</p>
+<% if find_me? %>
+    <p>Find me in app/views/password_resets/new.html.erb</p>
+<% end %>
 
 <% provide(:title, "Reset Password") %>
 <!--h1>Reset Password</h1-->

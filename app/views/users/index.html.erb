@@ -4,7 +4,9 @@
 # and open the template in the editor.
 %>
 
-<p>Find me in app/views/users/index.html.erb</p>
+<% if find_me? %>
+    <p>Find me in app/views/users/index.html.erb</p>
+<% end %>
 
 <% provide(:title, 'All users') %>
 <h1><%=t('Users')%></h1>

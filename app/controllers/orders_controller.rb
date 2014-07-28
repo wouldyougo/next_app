@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
       @orders = @orders.paginate(page: params[:page])
     end
   end
+
   def list
     if current_user.reader || current_user.admin
       #если читатель

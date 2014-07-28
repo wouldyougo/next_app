@@ -1,6 +1,7 @@
-<p>
-  <%= "_stats.html" %>
-</p>
+<% if find_me? %>
+    <p>Find me in app/views/shared/_stats.html.erb</p>
+<% end %>
+
 <!--Партиал для отображения статистики-->
 
 <% @user ||= current_user %>

@@ -1,5 +1,11 @@
 module SessionsHelper
 
+  #Отображать строки "Find me..."
+  def find_me?
+    #return true
+    return false
+  end
+
   def sign_in(user)
     remember_token = User.new_remember_token
     cookies.permanent[:remember_token] = remember_token

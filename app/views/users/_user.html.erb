@@ -3,7 +3,9 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 %>
-<%= "_user.html" %>
+<% if find_me? %>
+    <p>Find me in app/views/users/_user.html.erb</p>
+<% end %>
 
 <li>
   <%= gravatar_for user, size: 52 %>

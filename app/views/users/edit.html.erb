@@ -1,4 +1,6 @@
-<p>Find me in app/views/users/edit.html.erb</p>
+<% if find_me? %>
+    <p>Find me in app/views/users/edit.html.erb</p>
+<% end %>
 
 <% provide(:title, "Edit user") %>
 <h1><%= t('Edit user page') %></h1>

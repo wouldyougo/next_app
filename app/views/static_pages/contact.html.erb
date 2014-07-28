@@ -1,3 +1,5 @@
 <% provide(:title, 'Contact') %>
-<p>Find me in app/views/static_pages/contact.html.erb</p>
+<% if find_me? %>
+    <p>Find me in app/views/static_pages/contact.html.erb</p>
+<% end %>
 <h1><%= t('Contact') %></h1>

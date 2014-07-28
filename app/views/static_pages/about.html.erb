@@ -1,6 +1,7 @@
 <% provide(:title, 'About Us') %>
-
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<% if find_me? %>
+    <p>Find me in app/views/static_pages/about.html.erb</p>
+<% end %>
 
 <h1><%= t('About') %></h1>
 

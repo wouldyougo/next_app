@@ -1,7 +1,6 @@
-<p>
-<%= "_user_error_messages.html" %>
-</p>
-
+<% if find_me? %>
+    <p>Find me in app/views/shared/_user_error_messages.html.erb</p>
+<% end %>
 
 <% if @user.errors.any? %>
   <div id="error_explanation">
