@@ -200,3 +200,14 @@ config/initializers/secret_token.rb
     <% if find_me? %>
         <p>Find me in app/views/static_pages/home.html.erb</p>
     <% end %>
+
+* Сделать разные начальные страницы для ролей
+    * Admin
+    * Writer
+    * Reader
+
+* Сделать разные контроллеры заявок для ролей
+      * Admin
+      * Writer
+      * Reader
+

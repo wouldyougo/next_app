@@ -181,10 +181,3 @@ rails g migration change_column_default_to_orders
 git add .
 git commit -am "change_column"
 
-
-
-
-
---Сделать разные списки заявок для двух ролей
---    список заявок для читателя
---Сделать разные начальные страницы для двух ролей
