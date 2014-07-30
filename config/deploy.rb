@@ -3,6 +3,10 @@ require "bundler/capistrano"
 require 'capistrano_colors'
 load 'deploy/assets'
 
+set :ssh_options, {
+    config: false
+    #Other options...
+}
 set :rvm_type, :system
 set :application, "gap_app"
 #set :repository, "git@github.com:your-username/your-repository-name.git"
@@ -37,6 +41,9 @@ staging
 #role :app, "your-server-address"
 #role :db, "your-server-address", :primary => true
 role :web, "gap.lipetsk.ru"
+role :app, "gap.lipetsk.ru"
+#role :web, "deploy@gap.lipetsk.ru"
+#role :app, "deploy@gap.lipetsk.ru"
 role :app, "gap.lipetsk.ru"
 role :db, "gap.lipetsk.ru", :primary => true
 

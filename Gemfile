@@ -123,8 +123,11 @@ group :development do
   gem 'rvm-capistrano'
 
   gem 'capistrano-rails'
-  gem 'capistrano-bundler'
+  #gem 'capistrano-bundler'
   #gem 'capistrano-rvm'
+
+  #gem 'net-ssh', '~> 2.7.0'
+  gem 'net-ssh'
 end
 
 group :test do
