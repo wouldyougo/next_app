@@ -167,9 +167,10 @@ end
 #end
 
 group :production do
-  gem 'mysql2'
+  gem 'sqlite3'
+  #gem 'mysql2'
   #gem 'therubyracer'
-  gem 'rails_12factor', '0.0.2'
+  #gem 'rails_12factor', '0.0.2'
 end
 
 group :staging do

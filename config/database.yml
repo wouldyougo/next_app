@@ -27,21 +27,3 @@ production:
 staging:
   <<: *default
   database: db/staging.sqlite3
-
-staging_mysql:
-  adapter: mysql2
-  encoding: utf8
-  database: gap_app_staging
-  username: staging
-  password: [your password]
-  host: 127.0.0.1
-  port: 3306
-
-production_mysql:
-  adapter: mysql2
-  encoding: utf8
-  database: gap_app_production
-  username: production
-  password: [your password]
-  host: 127.0.0.1 # ip-адрес должен быть именно такой!
-  port: 3306
