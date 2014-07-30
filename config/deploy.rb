@@ -8,7 +8,7 @@ set :application, "gap_app"
 #set :repository, "git@github.com:your-username/your-repository-name.git"
 set :repository, "/var/repos/gap_app.git"
 #set :local_repository, "ssh://deploy@your-server-address/var/repos/store_app.git"
-set :local_repository, "ssh://deploy@gap.lipetsk.ru:/var/repos/gap_app.git"
+set :local_repository, "ssh://deploy@gap.lipetsk.ru/var/repos/gap_app.git"
 set :branch, "master"
 set :user, "deploy"
 set :deploy_via, :remote_cache
