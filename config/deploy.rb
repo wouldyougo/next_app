@@ -52,12 +52,15 @@ namespace :deploy do
     #task :symlink_config_files do
     #  run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
     #end
+    desc "custom_configs"
     task :custom_configs do
       run "ln -nsf #{shared_path}/config/database.yml #{current_release}/config/"
     end
+    desc "user_files"
     task :user_files do
       run "ln -nsf #{shared_path}/public/uploads/ #{current_release}/public/"
     end
+    desc "namespace custom_symlinks task default"
     task :default do
       user_files
       custom_configs
@@ -84,6 +87,7 @@ namespace :deploy do
 end
 
 namespace :migrate do
+  desc "namespace migrate task default"
   task :default do
     run "cd #{current_release} bundle exec rake db:migrate"
   end
