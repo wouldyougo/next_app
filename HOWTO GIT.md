@@ -114,3 +114,10 @@
     heroku run rake db:relations
     heroku restart
     heroku open
+
+    heroku pg:reset DATABASE --confirm fierce-waters-1951
+    heroku run rake db:migrate
+    heroku run rake db:populate
+    heroku run rake db:user_orders
+    heroku restart
+    heroku open

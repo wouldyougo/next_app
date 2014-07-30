@@ -117,6 +117,16 @@ group :development, :test do
   # gem 'childprocess', '0.3.6'
 end
 
+group :development do
+  gem 'capistrano'
+  gem 'capistrano_colors'
+  gem 'rvm-capistrano'
+
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  #gem 'capistrano-rvm'
+end
+
 group :test do
   #Using database_cleaner 1.3.0 from git://github.com/bmabey/database_cleaner.git (at master)
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
@@ -148,12 +158,19 @@ group :doc do
   gem 'sdoc', '>= 0.4.0', require: false
 end
 
+#group :production do
+#  gem 'pg', '0.15.1'
+#  gem 'rails_12factor', '0.0.2'
+#end
+
 group :production do
-  gem 'pg', '0.15.1'
+  gem 'mysql2'
+  #gem 'therubyracer'
   gem 'rails_12factor', '0.0.2'
 end
 
-
-
-
-
+group :staging do
+  gem 'sqlite3'
+  #gem 'mysql2'
+  #gem 'therubyracer'
+end
