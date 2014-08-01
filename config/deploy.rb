@@ -40,11 +40,11 @@ staging
 #role :web, "your-server-address"
 #role :app, "your-server-address"
 #role :db, "your-server-address", :primary => true
-role :web, "gap.lipetsk.ru"
-role :app, "gap.lipetsk.ru"
 #role :web, "deploy@gap.lipetsk.ru"
 #role :app, "deploy@gap.lipetsk.ru"
-#role :db, "gap.lipetsk.ru", :primary => true
+role :web, "gap.lipetsk.ru"
+role :app, "gap.lipetsk.ru"
+role :db, "gap.lipetsk.ru", :primary => true
 
 namespace :deploy do
   namespace :custom_symlinks do
