@@ -20,9 +20,18 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+#production:
+#  <<: *default
+#  database: db/production.sqlite3
+
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  pool: 5
+  #timeout: 5000
+  encoding: unicode
+  database: gap_app_production
+  username: dbuser
+  password: 789
 
 staging:
   <<: *default

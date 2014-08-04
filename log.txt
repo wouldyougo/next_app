@@ -173,6 +173,9 @@ git stash
     bundle exec rake test:prepare
     bundle exec rake db:user_orders
 
+                rake db:migrate RAILS_ENV="production"
+                rake db:setup RAILS_ENV="production"
+
 
 rails g migration change_column_default_to_orders
 
@@ -180,4 +183,8 @@ rails g migration change_column_default_to_orders
 
 git add .
 git commit -am "change_column"
+
+git add .
+git commit -am "db config"
+git push
 
