@@ -188,3 +188,11 @@ git add .
 git commit -am "db config"
 git push
 
+	git remote add gap_app \
+	deploy@192.168.161.146:/var/repos/gap_app.git
+	git push gap_app master	
+
+git add .
+git commit -am "git remote add gap_app"
+git push
+
