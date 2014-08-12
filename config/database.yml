@@ -24,14 +24,24 @@ test:
 #  <<: *default
 #  database: db/production.sqlite3
 
+#production:
+#  adapter: postgresql
+#  pool: 5
+#  #timeout: 5000
+#  encoding: unicode
+#  database: gap_app_production
+#  username: dbuser
+#  password: 789
+
 production:
-  adapter: postgresql
-  pool: 5
-  #timeout: 5000
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
   database: gap_app_production
-  username: dbuser
-  password: 789
+  pool: 5
+  username: production
+  password: password
+  host: localhost
 
 staging:
   <<: *default

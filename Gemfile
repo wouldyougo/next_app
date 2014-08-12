@@ -163,7 +163,8 @@ end
 
 group :production do
 #  gem 'pg', '0.15.1'
-  gem 'pg'
+  #gem 'pg'
+  #gem 'mysql2'
 #  gem 'rails_12factor', '0.0.2'
 end
 
@@ -175,7 +176,8 @@ end
 #end
 
 group :staging do
-  gem 'sqlite3'
+  #gem 'pg'
+  #gem 'sqlite3'
   #gem 'mysql2'
   #gem 'therubyracer'
 end
