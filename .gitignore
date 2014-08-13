@@ -30,10 +30,8 @@
 # Игнорирование прочих ненужных файлов.
 /config/secrets (copy).yml
 /config/database (copy).yml
-
-#/config/secrets.yml
-#/config/database.yml
-# database.yml
+/config/secrets.yml
+/config/database.yml
 
 doc/
 *.swp
