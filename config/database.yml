@@ -31,7 +31,7 @@ test:
 #  encoding: unicode
 #  database: gap_app_production
 #  username: dbuser
-#  password: 789
+#  password: password
 
 production:
   adapter: mysql2
@@ -40,7 +40,7 @@ production:
   database: gap_app_production
   pool: 5
   username: production
-  password: dbuserpsw
+  password: password
   host: localhost
 
 #staging:
@@ -54,6 +54,5 @@ staging:
   database: gap_app_staging
   pool: 5
   username: staging
-  password: dbuserpsw
+  password: password
   host: localhost
-

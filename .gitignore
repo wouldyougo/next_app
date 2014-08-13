@@ -28,7 +28,13 @@
 /tmp
 
 # Игнорирование прочих ненужных файлов.
-database.yml
+/config/secrets (copy).yml
+/config/database (copy).yml
+
+#/config/secrets.yml
+#/config/database.yml
+# database.yml
+
 doc/
 *.swp
 *~
