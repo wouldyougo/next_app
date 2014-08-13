@@ -196,3 +196,6 @@ git add .
 git commit -am "git remote add gap_app"
 git push
 
+git add .
+git commit -am "ignore"
+git push
