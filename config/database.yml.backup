@@ -25,34 +25,41 @@ test:
 #  database: db/production.sqlite3
 
 #production:
-#  adapter: postgresql
-#  pool: 5
-#  #timeout: 5000
-#  encoding: unicode
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
 #  database: gap_app_production
-#  username: dbuser
+#  pool: 5
+#  username: production
 #  password: password
+#  host: localhost
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: gap_app_production
+  adapter: postgresql
   pool: 5
-  username: production
+  encoding: unicode
+  database: gap_app_production
+  username: pgdbuser
   password: password
-  host: localhost
 
 #staging:
 #  <<: *default
 #  database: db/staging.sqlite3
 
+#staging:
+#  adapter: mysql2
+#  encoding: utf8
+#  #reconnect: false
+#  database: gap_app_staging
+#  pool: 5
+#  username: staging
+#  password: password
+#  host: localhost
+
 staging:
-  adapter: mysql2
-  encoding: utf8
-  #reconnect: false
+  adapter: postgresql
+  encoding: unicode
   database: gap_app_staging
   pool: 5
-  username: staging
+  username: pgdbuser
   password: password
-  host: localhost

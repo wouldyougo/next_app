@@ -66,8 +66,8 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'will_paginate', '>= 3.0.5'
 gem 'bootstrap-will_paginate', '>= 0.0.10'
 
-gem 'bcrypt'
 ##gem 'bcrypt-ruby', '>= 3.1.5'
+gem 'bcrypt'
 gem 'faker', '>= 1.3.0'
 
 gem 'uglifier', '>= 2.5.1'
@@ -161,23 +161,26 @@ group :doc do
   gem 'sdoc', '>= 0.4.0', require: false
 end
 
-group :production do
-#  gem 'pg', '0.15.1'
-  #gem 'pg'
-  gem 'mysql2'
-#  gem 'rails_12factor', '0.0.2'
-end
-
 #group :production do
-#  gem 'sqlite3'
+  #gem 'sqlite3'
+  #gem 'pg'
   #gem 'mysql2'
   #gem 'therubyracer'
   #gem 'rails_12factor', '0.0.2'
 #end
 
-group :staging do
+#group :staging do
   #gem 'pg'
   #gem 'sqlite3'
   #gem 'mysql2'
   #gem 'therubyracer'
+  #gem 'rails_12factor', '0.0.2'
+#end
+
+group :production, :staging do
+  gem 'pg'
+  #gem 'pg', '0.15.1'
+  #gem 'mysql2'
+  #gem 'therubyracer'
+  #gem 'rails_12factor', '0.0.2'
 end
