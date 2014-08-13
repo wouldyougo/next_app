@@ -40,9 +40,20 @@ production:
   database: gap_app_production
   pool: 5
   username: production
-  password: password
+  password: dbuserpsw
   host: localhost
 
+#staging:
+#  <<: *default
+#  database: db/staging.sqlite3
+
 staging:
-  <<: *default
-  database: db/staging.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  #reconnect: false
+  database: gap_app_staging
+  pool: 5
+  username: staging
+  password: dbuserpsw
+  host: localhost
+
