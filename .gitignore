@@ -28,8 +28,9 @@
 /tmp
 
 # Игнорирование прочих ненужных файлов.
-/config/secrets (copy).yml
-/config/database (copy).yml
+#git rm --cached config/database.yml
+#git rm --cached config/secrets.yml
+
 /config/secrets.yml
 /config/database.yml
 
