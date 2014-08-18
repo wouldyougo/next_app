@@ -19,6 +19,55 @@
     </div>
   <% end %>
 
+  <!--div>
+    <strong>current_user_id: <%= current_user.id %></strong>
+    <strong>order.user_id: <%= @order.user_id %></strong>
+  </div-->
+
+    <br>
+    <p>
+      <strong>Статус заявки:</strong>
+    </p>
+    <div class="row">
+      <div class="span5">
+        <p>
+          <strong>Агент:</strong>
+          <%= @order.user.name %>
+        </p>
+        <div class="field">
+          <%= f.label :order_status %>
+          <!--%= f.text_field :order_status %-->
+          <!--%= f.text_field :order_status, value: "Новая", readonly: true %-->
+          <%= f.text_field :order_status, readonly: true %>
+        </div>
+      </div>
+      <div class="span1">
+      </div>
+      <div class="span5">
+        <p>
+          <strong>Проверяющий:</strong>
+          <%= reader_name @order %>
+        </p>
+        <div class="field">
+          <%= f.label :contract_date %>
+          <!--%= f.datetime_select :contract_date %-->
+          <!--%= f.date_select :contract_date %-->
+          <!--%= f.date_select :contract_date, value: nil, readonly: true %-->
+          <%= f.text_field :contract_date, readonly: true %>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="row">
+      <div class="span5">...
+      </div>
+      <div class="span1">...
+      </div>
+      <div class="span5">...
+      </div>
+    </div>
+    -->
+  <br>
   <p>
       <strong>Данные абонента:</strong>
   </p>
@@ -39,7 +88,6 @@
         <div class="field">
           <%= f.label :phone %>
           <%= f.text_field :phone %>
-          <!--%= f.telephone_field(:phone) %-->
         </div>
         <div class="field">
           <%= f.label :phone_mobile %>
@@ -57,8 +105,6 @@
     <!--%= f.datetime_select :connection_date %-->
     <!--%= f.date_select :connection_date %-->
     <%= f.text_field :connection_date %>
-    <!--%= f.datetime_local_field :connection_date %-->
-
   </div>
     <div class="row">
       <div class="span5">
@@ -139,13 +185,11 @@
       </div>
     </div>
 
-  <div class="actions">
-    <!--%= f.submit %-->
-    <%= f.submit t('Save changes'), class: "btn btn-large btn-primary" %>
-  </div>
-
-
-    <div hidden class="row">
+    <br>
+    <p>
+      <strong>Дополнительные данные:</strong>
+    </p>
+    <div class="row">
       <div class="span5">
         <div class="field">
           <%= f.label :created_at %>
@@ -154,13 +198,6 @@
         <div class="field">
           <%= f.label :updated_at %>
           <%= f.text_field :updated_at, readonly: true %>
-        </div>
-        <div class="field">
-          <%= f.label :contract_date %>
-          <!--%= f.datetime_select :contract_date %-->
-          <!--%= f.date_select :contract_date %-->
-          <!--%= f.date_select :contract_date, value: nil, readonly: true %-->
-          <%= f.text_field :contract_date, readonly: true %>
         </div>
       </div>
       <div class="span1">
@@ -178,23 +215,19 @@
           <!--%= f.number_field :reader_id, value: nil, readonly: true %-->
           <%= f.number_field :reader_id, readonly: true %>
         </div>
-        <div class="field">
-          <%= f.label :order_status %>
-          <!--%= f.text_field :order_status %-->
-          <!--%= f.text_field :order_status, value: "Новая", readonly: true %-->
-          <%= f.text_field :order_status, readonly: true %>
-        </div>
       </div>
     </div>
 
-    <!--div>
-    <strong>current_user_id: <%= current_user.id %></strong>
-    <strong>order.user_id: <%= @order.user_id %></strong>
-  </div-->
 
-    <br>
     <p>
-      <strong>Дополнительные данные:</strong>
+      <!--strong>Reader:</strong-->
+      <strong>created_at:</strong>
+      <%= @order.created_at %>
+    </p>
+    <p>
+      <!--strong>Reader:</strong-->
+      <strong>updated_at:</strong>
+      <%= @order.updated_at %>
     </p>
     <p>
       <strong>Order_id:</strong>
@@ -205,50 +238,8 @@
       <%= @order.reader_id %>
     </p>
 
-    <div class="row">
-      <div class="span5">
-        <p>
-          <!--strong>Reader:</strong-->
-          <strong>Дата создания:</strong>
-          <%= @order.created_at %>
-        </p>
-        <p>
-          <!--strong>Reader:</strong-->
-          <strong>Дата обновления:</strong>
-          <%= @order.updated_at %>
-        </p>
-        <p>
-          <!--strong>Reader:</strong-->
-          <strong>Дата продажи:</strong>
-          <%= @order.contract_date %>
-        </p>
-      </div>
-      <div class="span1">
-      </div>
-      <div class="span5">
-        <p>
-          <strong>Агент:</strong>
-          <%= @order.user.name %>
-        </p>
-        <p>
-          <strong>Проверяющий:</strong>
-          <%= reader_name @order %>
-        </p>
-        <p>
-          <strong>Статус заявки:</strong>
-          <%= @order.order_status %>
-        </p>
-      </div>
-    </div>
-    <!--
-    <div class="row">
-      <div class="span5">...
-      </div>
-      <div class="span1">...
-      </div>
-      <div class="span5">...
-      </div>
-    </div>
-    -->
-    <br>
+  <div class="actions">
+    <!--%= f.submit %-->
+    <%= f.submit t('Save changes'), class: "btn btn-large btn-primary" %>
+  </div>
 <% end %>

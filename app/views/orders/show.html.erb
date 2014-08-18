@@ -193,6 +193,14 @@
       <strong>Дополнительные данные:</strong>
     </p>
     <p>
+      <strong>Order_id:</strong>
+      <%= @order.id %>
+      <strong>User_id:</strong>
+      <%= @order.user_id %>
+      <strong>Reader_id:</strong>
+      <%= @order.reader_id %>
+    </p>
+    <p>
       <!--strong>Reader:</strong-->
       <strong>created_at:</strong>
       <%= @order.created_at %>
@@ -201,14 +209,6 @@
       <!--strong>Reader:</strong-->
       <strong>updated_at:</strong>
       <%= @order.updated_at %>
-    </p>
-    <p>
-      <strong>Order_id:</strong>
-      <%= @order.id %>
-      <strong>User_id:</strong>
-      <%= @order.user_id %>
-      <strong>Reader_id:</strong>
-      <%= @order.reader_id %>
     </p>
 
     <!--%= link_to 'Принять', '#' %-->

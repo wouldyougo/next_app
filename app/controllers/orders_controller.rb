@@ -93,6 +93,16 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    if @order.order_status == "Новая" || current_user.admin
+      render :edit
+    else
+      #flash[:notice] = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
+      flash[:info] = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
+      #flash[:error] = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
+      #flash[:warning] = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
+      #flash[:success] = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
+      redirect_to order_path
+    end
   end
 
   # POST /orders
