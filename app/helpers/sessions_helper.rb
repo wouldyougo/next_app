@@ -2,8 +2,8 @@ module SessionsHelper
 
   #Отображать строки "Find me..."
   def find_me?
-    #return true
-    return false
+    return true
+    #return false
   end
 
   def sign_in(user)

@@ -29,6 +29,7 @@
 
 ### bundle install
     bundle install --without production
+    bundle install --without production staging
     bundle update
     bundle install
 

@@ -15,164 +15,120 @@
   <% end %>
 </p>
 
-<p>
-  <!--strong>User:</strong-->
-  <strong>Агент:</strong>
-  <%= @order.user.name %>
-</p>
+<!--table class="table table-bordered table-striped table-condensed"-->
+<table class="table table-bordered table-condensed">
+  <!--caption><h3>Список заявок</h3></caption-->
+  <thead>
+  <tr>
+    <th>Параметр</th>
+    <th>Значение</th>
+  </tr>
+  </thead>
+  <tbody>
+        <tr class="silver">
+          <td colspan="2"></td>
+        </tr>
+      <tr>
+        <th><strong>Агент:</strong></th>
+        <td><%= @order.user.name %></td>
+      </tr>
+      <% if @order.order_status == "Новая" %>
+      <tr class="warning">
+      <% elsif @order.order_status == "Принята"%>
+      <tr class="success">
+      <% elsif @order.order_status == "Отклонена"%>
+      <!--tr class="info"-->
+      <tr class="danger">
+      <% else %>
+      <tr class="silver">
+      <% end %>
+        <th><strong>Статус заявки:</strong></th>
+        <td><%= @order.order_status %></td>
+      </tr>
+      <tr>
+        <th><strong>Проверяющий:</strong></th>
+        <td><%= reader_name @order %></td>
+      </tr>
+      <tr>
+        <th><strong>Дата продажи:</strong></th>
+        <td><%= @order.contract_date %></td>
+      </tr>
 
-<p>
-  <!--strong>Order status:</strong-->
-  <strong>Статус заявки:</strong>
-  <%= @order.order_status %>
-</p>
+      <tr class="silver">
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <th><strong>ФИО абонента:</strong></th>
+        <td><%= @order.abonent %></td>
+      </tr>
+      <tr>
+        <th><strong>Адрес подключения:</strong></th>
+        <td><%= @order.address %></td>
+      </tr>
+      <tr>
+        <th><strong>Телефон домашний:</strong></th>
+        <td><%= @order.phone %></td>
+      </tr>
+      <tr>
+        <th><strong>Телефон сотовый:</strong></th>
+        <td><%= @order.phone_mobile %></td>
+      </tr>
 
-<p>
-  <!--strong>Reader:</strong-->
-  <!--%= @order.reader.name %-->
-  <strong>Проверяющий:</strong>
-  <%= reader_name @order %>
-</p>
+        <tr class="silver">
+          <td colspan="2"></td>
+        </tr>
+      <tr>
+        <th><strong>Дата подключения:</strong></th>
+        <td><%= @order.connection_date %></td>
+      </tr>
+      <tr>
+        <th><strong>Тарифный план ШПД:</strong></th>
+        <td><%= @order.inet_tariff_plan %></td>
+      </tr>
+      <tr>
+        <th><strong>Договор на Оборудование ШПД:</strong></th>
+        <td><%= @order.inet_device_contract %>
+            <%= @order.inet_installment_plan %>
+        </td>
+      </tr>
+      <tr>
+        <th><strong>Тарифный план IPTV:</strong></th>
+        <td><%= @order.iptv_tariff_plan %></td>
+      </tr>
+      <tr>
+        <th><strong>Договор на Оборудование IPTV:</strong></th>
+        <td><%= @order.iptv_device_contract %>
+            <%= @order.iptv_installment_plan %>
+        </td>
+      </tr>
+        <tr class="silver">
+          <td colspan="2"></td>
+        </tr>
+      <tr>
+        <th><strong>Серия и номер паспорта:</strong></th>
+        <td><%= @order.passport_series %>
+            <%= @order.passport_number %>
+        </td>
+      </tr>
+      <tr>
+        <th><strong>Когда выдан:</strong></th>
+        <td><%= @order.passport_registration_date %></td>
+      </tr>
+      <tr>
+        <th><strong>Кем выдан:</strong></th>
+        <td><%= @order.passport_issued_by %></td>
+      </tr>
+      <tr>
+        <th><strong>Дата рождения:</strong></th>
+        <td><%= @order.date_of_birth %></td>
+      </tr>
+      <tr>
+        <th><strong>Место рождения:</strong></th>
+        <td> <%= @order.place_of_birth %></td>
+      </tr>
+  </tbody>
+</table>
 
-<p>
-  <!--strong>Contract date:</strong-->
-  <strong>Дата продажи:</strong>
-  <%= @order.contract_date %>
-</p>
-
-    <br>
-    <p>
-      <strong>Данные абонента:</strong>
-    </p>
-<p>
-  <!--strong>Abonent:</strong-->
-  <!--strong><%= t(:abonent) %></strong-->
-  <strong>ФИО абонента:</strong>
-  <%= @order.abonent %>
-</p>
-
-<p>
-  <!--strong>Address:</strong-->
-  <strong>Адрес подключения:</strong>
-  <%= @order.address %>
-</p>
-
-<p>
-  <!--strong>Phone:</strong-->
-  <strong>Телефон домашний:</strong>
-  <%= @order.phone %>
-  <!--strong>Phone mobile:</strong-->
-  <strong>Телефон сотовый:</strong>
-  <%= @order.phone_mobile %>
-</p>
-
-    <br>
-    <p>
-      <strong>Подключение:</strong>
-    </p>
-<p>
-  <!--strong>Connection date:</strong-->
-  <strong>Дата подключения:</strong>
-  <%= @order.connection_date %>
-</p>
-
-<p>
-  <!--strong>Inet tariff plan:</strong-->
-  <strong>Тарифный план ШПД:</strong>
-  <%= @order.inet_tariff_plan %>
-</p>
-
-<p>
-  <!--strong>Inet device contract:</strong-->
-  <strong>Договор на Оборудование ШПД:</strong>
-  <%= @order.inet_device_contract %>
-  <!--strong>Inet installment plan:</strong-->
-  <!--strong>Длительность рассрочки:</strong-->
-  <%= @order.inet_installment_plan %>
-</p>
-
-<p>
-  <!--strong>Iptv tariff plan:</strong-->
-  <strong>Тарифный план IPTV:</strong>
-  <%= @order.iptv_tariff_plan %>
-</p>
-
-<p>
-  <!--strong>Iptv device contract:</strong-->
-  <strong>Договор на Оборудование IPTV:</strong>
-  <%= @order.iptv_device_contract %>
-  <!--strong>Iptv installment plan:</strong-->
-  <!--strong>Длительность рассрочки:</strong-->
-  <%= @order.iptv_installment_plan %>
-</p>
-
-<br>
-<p>
-  <strong>Паспортные данные:</strong>
-</p>
-
-<p>
-  <!--strong>Passport series:</strong-->
-  <strong>Серия паспорта:</strong>
-  <%= @order.passport_series %>
-  <!--strong>Passport number:</strong-->
-  <strong>Номер паспорта:</strong>
-  <%= @order.passport_number %>
-</p>
-
-<p>
-  <!--strong>Passport registration date:</strong-->
-  <strong>Когда выдан:</strong>
-  <%= @order.passport_registration_date %>
-  <!--strong>Passport issued by:</strong-->
-  <strong>Кем выдан:</strong>
-  <%= @order.passport_issued_by %>
-</p>
-
-<p>
-  <!--strong>Date of birth:</strong-->
-  <strong>Дата рождения:</strong>
-  <%= @order.date_of_birth %>
-  <!--strong>Place of birth:</strong-->
-  <strong>Место рождения:</strong>
-  <%= @order.place_of_birth %>
-</p>
-
-<br>
-<p>
-  <strong>Дополнительные данные:</strong>
-</p>
-<p>
-  <!--strong>Reader:</strong-->
-  <strong>created_at:</strong>
-  <%= @order.created_at %>
-</p>
-<p>
-  <!--strong>Reader:</strong-->
-  <strong>updated_at:</strong>
-  <%= @order.updated_at %>
-</p>
-<p>
-  <strong>Order_id:</strong>
-  <%= @order.id %>
-  <strong>User_id:</strong>
-  <%= @order.user_id %>
-  <strong>Reader_id:</strong>
-  <%= @order.reader_id %>
-</p>
-
-<!--%= link_to 'Принять', '#' %-->
-<!--%= link_to 'Отклонить', '#' %-->
-<p>
-  <strong>current_user.reader:</strong>
-  <%= current_user.reader %>
-<p>
-</p>
-  <strong>current_user.admin:</strong>
-  <%= current_user.admin %>
-</p>
-
-<br>
 <div class="row">
   <div class="span2">
     <% if (current_user.reader && @order.order_status == "Новая") ||
@@ -230,3 +186,39 @@
     <% end %>
   </div>
 </div>
+
+<% if find_me? %>
+    <br>
+    <p>
+      <strong>Дополнительные данные:</strong>
+    </p>
+    <p>
+      <!--strong>Reader:</strong-->
+      <strong>created_at:</strong>
+      <%= @order.created_at %>
+    </p>
+    <p>
+      <!--strong>Reader:</strong-->
+      <strong>updated_at:</strong>
+      <%= @order.updated_at %>
+    </p>
+    <p>
+      <strong>Order_id:</strong>
+      <%= @order.id %>
+      <strong>User_id:</strong>
+      <%= @order.user_id %>
+      <strong>Reader_id:</strong>
+      <%= @order.reader_id %>
+    </p>
+
+    <!--%= link_to 'Принять', '#' %-->
+    <!--%= link_to 'Отклонить', '#' %-->
+    <p>
+      <strong>current_user.reader:</strong>
+      <%= current_user.reader %>
+    <p>
+    </p>
+    <strong>current_user.admin:</strong>
+    <%= current_user.admin %>
+    </p>
+<% end %>
