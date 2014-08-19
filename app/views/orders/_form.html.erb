@@ -60,30 +60,58 @@
       <div class="span5">
         <div class="field">
           <%= f.label :phone %>
-          <%= f.text_field :phone %>
           <!--%= f.telephone_field(:phone) %-->
+          <!--%= f.text_field :phone %-->
+          <%= f.text_field :phone, :"data-behaviour" => "phonemask" %>
+          <script type="text/javascript">
+              $(document).ready(function(){
+                  $('[data-behaviour~=phonemask]').inputmask("99999999999",{placeholder:""});  //direct mask
+              });
+          </script>
+
         </div>
         <div class="field">
           <%= f.label :phone_mobile %>
-          <%= f.text_field :phone_mobile %>
+          <%= f.text_field :phone_mobile, :"data-behaviour" => "phone_mobile_mask" %>
+          <script type="text/javascript">
+              $(document).ready(function(){
+                  $('[data-behaviour~=phone_mobile_mask]').inputmask("mask", {"mask": "99999999999", placeholder:""});  //direct mask
+              });
+          </script>
         </div>
       </div>
     </div>
 
   <br>
-  <p>
-    <strong>Данные подключения:</strong>
-  </p>
-  <div class="field">
-    <%= f.label :connection_date %>
-    <!--%= f.datetime_select :connection_date %-->
-    <!--%= f.date_select :connection_date %-->
-    <!--%= f.datetime_local_field :connection_date %-->
-    <!--%= f.text_field :connection_date %-->
-    <input name="order[connection_date]" id="order_connection_date"
-           type="text" data-behaviour="datepicker"
-           value=<%= @order.connection_date %>>
-  </div>
+    <div class="row">
+      <div class="span5">
+        <p>
+          <strong>Данные подключения:</strong>
+        </p>
+        <div class="field">
+          <%= f.label :connection_date %>
+          <!--%= f.datetime_select :connection_date %-->
+          <!--%= f.date_select :connection_date %-->
+          <!--%= f.datetime_local_field :connection_date %-->
+          <!--%= f.text_field :connection_date %-->
+          <input name="order[connection_date]" id="order_connection_date"
+                 type="text" data-behaviour="datepicker"
+                 value=<%= @order.connection_date %>>
+          <!--%= f.text_field :connection_date, :"data-behaviour" => "datepicker" %-->
+        </div>
+        <div class="field">
+        </div>
+      </div>
+      <div class="span1">
+      </div>
+      <div class="span5">
+        <div class="field">
+        </div>
+        <div class="field">
+        </div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="span5">
         <div class="field">
@@ -130,7 +158,13 @@
       <div class="span5">
         <div class="field">
           <%= f.label :passport_series %>
-          <%= f.text_field :passport_series %>
+          <!--%= f.text_field :passport_series %-->
+          <%= f.text_field :passport_series, :"data-behaviour" => "passport_series_mask" %>
+          <script type="text/javascript">
+              $(document).ready(function(){
+                  $('[data-behaviour~=passport_series_mask]').inputmask("9999");  //direct mask
+              });
+          </script>
         </div>
         <div class="field">
           <%= f.label :passport_registration_date %>
@@ -151,7 +185,13 @@
       <div class="span5">
         <div class="field">
           <%= f.label :passport_number %>
-          <%= f.text_field :passport_number %>
+          <!--%= f.text_field :passport_number %-->
+          <%= f.text_field :passport_number, :"data-behaviour" => "passport_number_mask" %>
+          <script type="text/javascript">
+              $(document).ready(function(){
+                  $('[data-behaviour~=passport_number_mask]').inputmask("999999");  //direct mask
+              });
+          </script>
         </div>
         <div class="field">
           <%= f.label :date_of_birth %>

@@ -68,7 +68,7 @@ gem 'bootstrap-will_paginate', '>= 0.0.10'
 gem 'bootstrap-datepicker-rails'
 #gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
 #    :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
-
+gem 'jquery-inputmask-rails'
 
 ##gem 'bcrypt-ruby', '>= 3.1.5'
 gem 'bcrypt'

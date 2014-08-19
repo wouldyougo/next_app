@@ -20,8 +20,8 @@ class Order < ActiveRecord::Base
   # "Адрес подключения"
   validates :address, presence: true, length: { maximum: 150 }
   # "Телефон домашний" и "Телефон сотовый"
-  validates :phone,         allow_blank: true, length: { minimum: 6,  maximum: 11 }
-  validates :phone_mobile,  allow_blank: true, length: { minimum: 10, maximum: 11 }
+  validates :phone,         allow_blank: true, length: { minimum: 6,  maximum: 11 }, numericality: { only_integer: true }
+  validates :phone_mobile,  allow_blank: true, length: { minimum: 10, maximum: 11 }, numericality: { only_integer: true }
   # "Статус заявки: Новая / Принята / Отклонена"
   validates :order_status, presence: true, inclusion: { in: %w(Новая Принята Отклонена)}
   #validates :order_status, allow_blank: true
