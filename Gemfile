@@ -65,6 +65,7 @@ gem 'bootstrap-sass', '2.3.2.0'
 
 gem 'will_paginate', '>= 3.0.5'
 gem 'bootstrap-will_paginate', '>= 0.0.10'
+gem 'bootstrap-datepicker-rails'
 
 ##gem 'bcrypt-ruby', '>= 3.1.5'
 gem 'bcrypt'

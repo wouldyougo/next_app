@@ -2,6 +2,28 @@
     <p>Find me in app/views/orders/_form.html.erb</p>
 <% end %>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('[data-behaviour~=datepicker]').datepicker({
+            format: "yyyy-mm-dd",
+            startView: 0,
+            language: "ru",
+            todayHighlight: true
+        });
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('[data-behaviour~=datepicker2]').datepicker({
+            format: "yyyy-mm-dd",
+            startView: 2,
+            language: "ru",
+            todayHighlight: true
+        });
+    })
+</script>
+
 <%= form_for(@order) do |f| %>
 
   <% if @order.errors.any? %>
@@ -56,9 +78,11 @@
     <%= f.label :connection_date %>
     <!--%= f.datetime_select :connection_date %-->
     <!--%= f.date_select :connection_date %-->
-    <%= f.text_field :connection_date %>
     <!--%= f.datetime_local_field :connection_date %-->
-
+    <!--%= f.text_field :connection_date %-->
+    <input name="order[connection_date]" id="order_connection_date"
+           type="text" data-behaviour="datepicker"
+           value=<%= @order.connection_date %>>
   </div>
     <div class="row">
       <div class="span5">
@@ -112,7 +136,10 @@
           <%= f.label :passport_registration_date %>
           <!--%= f.datetime_select :passport_registration_date %-->
           <!--%= f.date_select :passport_registration_date %-->
-          <%= f.text_field :passport_registration_date %>
+          <!--%= f.text_field :passport_registration_date %-->
+          <input name="order[passport_registration_date]" id="order_passport_registration_date"
+                 type="text" data-behaviour="datepicker2"
+                 value=<%= @order.passport_registration_date %>>
         </div>
         <div class="field">
           <%= f.label :passport_issued_by %>
@@ -130,7 +157,11 @@
           <%= f.label :date_of_birth %>
           <!--%= f.datetime_select :date_of_birth %-->
           <!--%= f.date_select :date_of_birth %-->
-          <%= f.text_field :date_of_birth, value: nil %>
+          <!--%= f.text_field :date_of_birth, value: nil%-->
+          <!--%= f.text_field :date_of_birth%-->
+          <input name="order[date_of_birth]" id="order_date_of_birth"
+                 type="text" data-behaviour="datepicker2"
+                 value=<%= @order.date_of_birth %>>
         </div>
         <div class="field">
           <%= f.label :place_of_birth %>

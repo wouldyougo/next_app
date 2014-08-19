@@ -141,6 +141,7 @@ passport_registration_date:datetime passport_issued_by:string \
 date_of_birth:datetime place_of_birth:string
 
 rake db:migrate
+
 rake db:rollback
 rails destroy scaffold Order
 ---------------------------
@@ -176,9 +177,7 @@ git stash
                 rake db:migrate RAILS_ENV="production"
                 rake db:setup RAILS_ENV="production"
 
-
 rails g migration change_column_default_to_orders
-
     change_column_default :orders, :order_status, "Новая"
 
 git add .
