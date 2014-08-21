@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702142553) do
-
-  create_table "microposts", force: true do |t|
-    t.string   "content"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+ActiveRecord::Schema.define(version: 20140701202407) do
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
@@ -31,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140702142553) do
     t.string   "address"
     t.string   "phone"
     t.string   "phone_mobile"
-    t.datetime "connection_date"
+    t.date     "connection_date"
     t.string   "inet_tariff_plan"
     t.string   "inet_device_contract"
     t.integer  "inet_installment_plan"
@@ -40,9 +31,9 @@ ActiveRecord::Schema.define(version: 20140702142553) do
     t.integer  "iptv_installment_plan"
     t.string   "passport_series"
     t.string   "passport_number"
-    t.datetime "passport_registration_date"
+    t.date     "passport_registration_date"
     t.string   "passport_issued_by"
-    t.datetime "date_of_birth"
+    t.date     "date_of_birth"
     t.string   "place_of_birth"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -51,20 +42,9 @@ ActiveRecord::Schema.define(version: 20140702142553) do
   add_index "orders", ["reader_id", "updated_at"], name: "index_orders_on_reader_id_and_updated_at"
   add_index "orders", ["user_id", "created_at"], name: "index_orders_on_user_id_and_created_at"
 
-  create_table "relationships", force: true do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
-
   create_table "users", force: true do |t|
     t.string   "name"
-    t.string   "email"
+    t.string   "email",                                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"

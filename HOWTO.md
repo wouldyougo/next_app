@@ -270,6 +270,16 @@ id пользователя доступен в переменной params[:id]
 
     rails generate integration_test authentication_pages
 
+    rails destroy model Relationship
+    rails destroy controller Relationships
+    rails destroy view Relationships
+
+    rails destroy model Micropost
+    rails destroy controller Microposts
+    rails destroy view Microposts
+
+    rails destroy scaffold Order
+
 ### Пример rake db:migrate
 
     bundle exec rake db:create

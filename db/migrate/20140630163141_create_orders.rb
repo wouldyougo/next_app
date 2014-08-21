@@ -3,13 +3,13 @@ class CreateOrders < ActiveRecord::Migration
     create_table :orders do |t|
       t.integer :user_id
       t.integer :reader_id
-      t.string :order_status
+      t.string :order_status,               default: "Новая"
       t.datetime :contract_date
       t.string :abonent
       t.string :address
       t.string :phone
       t.string :phone_mobile
-      t.datetime :connection_date
+      t.date :connection_date
       t.string :inet_tariff_plan
       t.string :inet_device_contract
       t.integer :inet_installment_plan
@@ -18,9 +18,9 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :iptv_installment_plan
       t.string :passport_series
       t.string :passport_number
-      t.datetime :passport_registration_date
+      t.date :passport_registration_date
       t.string :passport_issued_by
-      t.datetime :date_of_birth
+      t.date :date_of_birth
       t.string :place_of_birth
 
       t.timestamps

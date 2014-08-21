@@ -169,9 +169,9 @@ git stash
 
     bundle exec rake db:reset
     bundle exec rake db:populate
-    bundle exec rake db:postulate
-    bundle exec rake db:relations
-    bundle exec rake test:prepare
+    #bundle exec rake db:postulate
+    #bundle exec rake db:relations
+    #bundle exec rake test:prepare
     bundle exec rake db:user_orders
 
     bundle exec rake db:drop RAILS_ENV="production"
@@ -204,3 +204,36 @@ git commit -am "ignore"
 git push
 
 git checkout -b dbrestructure
+git add .
+git commit -am "dbrestructure"
+git checkout master
+git merge dbrestructure
+
+
+    rails destroy model Relationship
+    rails destroy controller Relationships
+    rails destroy view Relationships
+
+    rails destroy model Micropost
+    rails destroy controller Microposts
+    rails destroy view Microposts
+
+
+bundle exec rake db:drop
+bundle exec rake db:create
+bundle exec rake db:migrate
+bundle exec rake db:populate
+
+bundle exec rake db:drop:all
+bundle exec rake db:create:all
+
+bundle exec rake db:drop RAILS_ENV=staging
+bundle exec rake db:create RAILS_ENV=staging
+bundle exec rake db:migrate RAILS_ENV=staging
+bundle exec rake db:populate RAILS_ENV=staging
+bundle exec rake db:user_orders RAILS_ENV=staging
+
+bundle exec rake db:drop RAILS_ENV=production
+bundle exec rake db:create RAILS_ENV=production
+bundle exec rake db:migrate RAILS_ENV=production
+bundle exec rake db:populate RAILS_ENV=production
