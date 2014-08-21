@@ -13,7 +13,7 @@
 <!--h4><%= t('App name') %></h4-->
 
 <% if signed_in? %>
-  <div class="row">
+  <!--div class="row"-->
     <!--aside class="span4"-->
     <!--aside class="span4"-->
       <section>
@@ -50,7 +50,7 @@
       <% end %>
     </div>
 
-  </div>
+  <!--/div-->
 <% else %>
   <div class="center hero-unit">
     <h4><%= t('start_message_1') %></h4>
@@ -58,7 +58,7 @@
     <%= link_to t('Sign in'), signin_path,
                 class: "btn btn-large btn-primary" %>
   </div>
-  <div class="center hero-unit">
+  <div hidden class="center hero-unit">
     <h4><%= t('start_message_2') %></h4>
     <%= link_to t('Sign up'), signup_path%>
   </div>

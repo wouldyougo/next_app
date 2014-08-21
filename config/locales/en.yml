@@ -20,6 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+#  date:
+  time:
+    formats:
+      default: "%Y-%m-%d"
+      numeric: "%Y-%m-%d"
+
   hello: "Hello world"
 
   App name: "Заявки на подключение услуг"

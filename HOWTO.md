@@ -195,6 +195,8 @@ id пользователя доступен в переменной params[:id]
     >> Rails.env.production?
     => true
 
+    rails console staging
+
 ### rails console --sandbox
     rails console --sandbox
     user = User.new(name: "admin", email: "admin@example.com")
@@ -235,6 +237,8 @@ id пользователя доступен в переменной params[:id]
 ### rake db:migrate
     rake db:migrate
     rake db:rollback
+    rake db:rollback STEP=3
+
     Для того чтобы откатить к самому началу (все миграции), мы можем использовать
     rake db:migrate VERSION=0
 
@@ -267,13 +271,43 @@ id пользователя доступен в переменной params[:id]
     rails generate integration_test authentication_pages
 
 ### Пример rake db:migrate
+
+    bundle exec rake db:create
     bundle exec rake db:migrate
-    bundle exec rake db:reset
     bundle exec rake db:populate
     bundle exec rake db:postulate
     bundle exec rake db:relations
     bundle exec rake test:prepare
     bundle exec rake db:user_orders
+
+### Установка базы даных
+    Задача rake db:setup создаст базу данных, загрузит схему и инициализирует ее с помощью данных seed.
+    rake db:setup
+
+### Сброс базы данных
+    bundle exec rake db:reset
+
+    Задача db:reset удалит базу данных и установит ее заново. Функционально это эквивалентно rake db:drop db:setup
+    Это не то же самое, что запуск всех миграций. Оно использует только текущее содержимое файла schema.rb.
+    Если миграция не может быть откачена, 'rake db:reset' может не помочь вам.
+
+    rake db:drop
+    rake db:setup
+
+### Сброс базы данных - использование
+    bundle exec rake db:reset RAILS_ENV="production"
+    bundle exec rake db:drop RAILS_ENV="production"
+    bundle exec rake db:setup RAILS_ENV="production"
+
+    bundle exec rake db:create RAILS_ENV="production"
+
+    bundle exec rake db:migrate RAILS_ENV="production"
+    bundle exec rake db:populate RAILS_ENV="production"
+    bundle exec rake db:user_orders RAILS_ENV="production"
+
+    bundle exec rake db:migrate RAILS_ENV=staging
+    bundle exec rake db:populate RAILS_ENV=staging
+    bundle exec rake db:user_orders RAILS_ENV=staging
 
 ### Базовые типы
      user_id:       integer
@@ -281,6 +315,10 @@ id пользователя доступен в переменной params[:id]
      content:       string
      start_date:    datetime
      price:         decimal, precision: 8, scale: 2
+
+### rails dbconsole
+    rails dbconsole
+    rails db
 
 ### Настройка Action Mailer для Gmail
 Action Mailer теперь использует гем Mail,
@@ -312,3 +350,52 @@ Action Mailer теперь использует гем Mail,
     rake db:migrate
     rake db:rollback
     rails destroy scaffold Order
+
+### rake -T
+    rake -T
+    rake about                              # List versions of all Rails frameworks and the environment
+    rake assets:clean[keep]                 # Remove old compiled assets
+    rake assets:clobber                     # Remove compiled assets
+    rake assets:environment                 # Load asset compile environment
+    rake assets:precompile                  # Compile all the assets named in config.assets.precompile
+    rake cache_digests:dependencies         # Lookup first-level dependencies for TEMPLATE (like messages/show or comments/_comment.html)
+    rake cache_digests:nested_dependencies  # Lookup nested dependencies for TEMPLATE (like messages/show or comments/_comment.html)
+    rake db:create                          # Creates the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:create:all to create all databases in the config)
+    rake db:drop                            # Drops the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:drop:all to drop all databases in the config)
+    rake db:fixtures:load                   # Load fixtures into the current environment's database
+    rake db:migrate                         # Migrate the database (options: VERSION=x, VERBOSE=false, SCOPE=blog)
+    rake db:migrate:status                  # Display status of migrations
+    rake db:populate                        # Fill database with sample data
+    rake db:rollback                        # Rolls the schema back to the previous version (specify steps w/ STEP=n)
+    rake db:schema:cache:clear              # Clear a db/schema_cache.dump file
+    rake db:schema:cache:dump               # Create a db/schema_cache.dump file
+    rake db:schema:dump                     # Create a db/schema.rb file that is portable against any DB supported by AR
+    rake db:schema:load                     # Load a schema.rb file into the database
+    rake db:seed                            # Load the seed data from db/seeds.rb
+    rake db:setup                           # Create the database, load the schema, and initialize with the seed data (use db:reset to also drop the database first)
+    rake db:structure:dump                  # Dump the database structure to db/structure.sql
+    rake db:version                         # Retrieves the current schema version number
+    rake doc:app                            # Generate docs for the app -- also available doc:rails, doc:guides (options: TEMPLATE=/rdoc-template.rb, TITLE="Custom Title")
+    rake log:clear                          # Truncates all *.log files in log/ to zero bytes (specify which logs with LOGS=test,development)
+    rake middleware                         # Prints out your Rack middleware stack
+    rake notes                              # Enumerate all annotations (use notes:optimize, :fixme, :todo for focus)
+    rake notes:custom                       # Enumerate a custom annotation, specify with ANNOTATION=CUSTOM
+    rake rails:template                     # Applies the template supplied by LOCATION=(/path/to/template) or URL
+    rake rails:update                       # Update configs and some other initially generated files (or use just update:configs or update:bin)
+    rake routes                             # Print out all defined routes in match order, with names
+    rake secret                             # Generate a cryptographically secure secret key (this is typically used to generate a secret for cookie sessions)
+    rake spec                               # Run all specs in spec directory (excluding plugin specs)
+    rake spec:controllers                   # Run the code examples in spec/controllers
+    rake spec:helpers                       # Run the code examples in spec/helpers
+    rake spec:mailers                       # Run the code examples in spec/mailers
+    rake spec:models                        # Run the code examples in spec/models
+    rake spec:requests                      # Run the code examples in spec/requests
+    rake spec:routing                       # Run the code examples in spec/routing
+    rake spec:views                         # Run the code examples in spec/views
+    rake stats                              # Report code statistics (KLOCs, etc) from the application
+    rake test                               # Runs test:units, test:functionals, test:generators, test:integration together
+    rake test:all                           # Run tests quickly by merging all types and not resetting db
+    rake test:all:db                        # Run tests quickly, but also reset db
+    rake time:zones:all                     # Displays all time zones, also available: time:zones:us, time:zones:local -- filter with OFFSET parameter, e.g., OFFSET=-6
+    rake tmp:clear                          # Clear session, cache, and socket files from tmp/ (narrow w/ tmp:sessions:clear, tmp:cache:clear, tmp:sockets:clear)
+    rake tmp:create                         # Creates tmp directories for sessions, cache, sockets, and pids

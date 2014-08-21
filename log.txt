@@ -174,8 +174,12 @@ git stash
     bundle exec rake test:prepare
     bundle exec rake db:user_orders
 
-                rake db:migrate RAILS_ENV="production"
-                rake db:setup RAILS_ENV="production"
+    bundle exec rake db:drop RAILS_ENV="production"
+    bundle exec rake db:setup RAILS_ENV="production"
+
+    bundle exec rake db:drop RAILS_ENV="production"
+    bundle exec rake db:create RAILS_ENV="production"
+    bundle exec rake db:migrate RAILS_ENV="production"
 
 rails g migration change_column_default_to_orders
     change_column_default :orders, :order_status, "Новая"
@@ -198,3 +202,5 @@ git push
 git add .
 git commit -am "ignore"
 git push
+
+git checkout -b dbrestructure

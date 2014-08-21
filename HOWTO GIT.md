@@ -121,3 +121,10 @@
     heroku run rake db:user_orders
     heroku restart
     heroku open
+
+### git stash
+git stash
+
+### git pull
+git clone /var/repos/gap_app.git
+git pull /var/repos/gap_app.git
