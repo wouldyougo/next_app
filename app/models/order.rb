@@ -27,6 +27,8 @@ class Order < ActiveRecord::Base
   #validates :order_status, allow_blank: true
   # "Дата продажи"
   #validates :contract_date, allow_blank: true
+  # "comment"
+  validates :comment, allow_blank: true, length: { maximum: 100 }
 
   # "Предполагаемая дата подключения"
   validates :connection_date, presence: true

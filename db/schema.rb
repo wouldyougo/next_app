@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701202407) do
+ActiveRecord::Schema.define(version: 20140821153216) do
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140701202407) do
     t.string   "place_of_birth"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment"
   end
 
   add_index "orders", ["reader_id", "updated_at"], name: "index_orders_on_reader_id_and_updated_at"

@@ -93,14 +93,18 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    #Пользователь создавший заявку должен иметь возможность редактировать ее в статусах "новая" и "отклонена"
     if @order.order_status == "Новая" || current_user.admin
       render :edit
+    elsif @order.order_status == "Отклонена" && @order.user_id = current_user.id
+        render :edit
     else
-      #flash[:notice] = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
-      flash[:info] = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
-      #flash[:error] = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
-      #flash[:warning] = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
-      #flash[:success] = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
+      #flash[:notice]   = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
+      #flash[:info]     = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
+      #flash[:error]    = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
+      #flash[:warning]  = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
+      #flash[:success]  = "Редактирование закрыто для заявок в статусе 'Принята' и 'Отклонена'"
+      flash[:info] = "Редактирование закрыто для заявок в статусе 'Принята'"
       redirect_to order_path
     end
   end
@@ -155,6 +159,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :reader_id, :order_status, :contract_date, :abonent, :address, :phone, :phone_mobile, :connection_date, :inet_tariff_plan, :inet_device_contract, :inet_installment_plan, :iptv_tariff_plan, :iptv_device_contract, :iptv_installment_plan, :passport_series, :passport_number, :passport_registration_date, :passport_issued_by, :date_of_birth, :place_of_birth)
+      params.require(:order).permit(:user_id, :reader_id, :order_status, :contract_date, :abonent, :address, :phone, :phone_mobile, :connection_date, :inet_tariff_plan, :inet_device_contract, :inet_installment_plan, :iptv_tariff_plan, :iptv_device_contract, :iptv_installment_plan, :passport_series, :passport_number, :passport_registration_date, :passport_issued_by, :date_of_birth, :place_of_birth, :comment)
     end
 end

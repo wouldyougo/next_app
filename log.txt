@@ -240,3 +240,7 @@ bundle exec rake db:drop RAILS_ENV=production
 bundle exec rake db:create RAILS_ENV=production
 bundle exec rake db:migrate RAILS_ENV=production
 bundle exec rake db:populate RAILS_ENV=production
+
+rails generate migration add_comment_fields_to_orders comment:string
+    rake db:migrate
+    rake db:rollback

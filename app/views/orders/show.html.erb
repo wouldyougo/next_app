@@ -46,6 +46,10 @@
         <td><%= @order.order_status %></td>
       </tr>
       <tr>
+        <th><strong>Комментарий:</strong></th>
+        <td><%= @order.comment %></td>
+      </tr>
+      <tr>
         <th><strong>Проверяющий:</strong></th>
         <td><%= reader_name @order %></td>
       </tr>
@@ -131,7 +135,7 @@
 </table>
 
 <div class="row">
-  <div class="span2">
+  <div class="span5">
     <% if (current_user.reader && @order.order_status == "Новая") ||
             (current_user.admin  && @order.order_status == "Отклонена")%>
         <!--%= f.text_area :content, value: "new micropost!" %-->
@@ -154,15 +158,23 @@
             </div>
             <div class="actions">
               <!--%= f.submit %-->
-              <%= f.submit "Принять", class: "btn btn-large btn-primary" %>
+              <!--%= f.submit "Принять", class: "btn btn-large btn-primary" %-->
+              <!--%= f.submit "Принять", class: "btn btn-large btn-success", disabled: "disabled"%-->
+              <%= f.submit "Принять", class: "btn btn-large btn-success"%>
             </div>
         <% end %>
     <% end %>
   </div>
-  <div class="span2">
     <% if (current_user.reader && @order.order_status == "Новая") ||
             (current_user.admin  && @order.order_status == "Принята")%>
         <%= form_for(@order) do |f| %>
+          <div class="span5">
+            <div class="field">
+              <%= f.label :comment %>
+              <%= f.text_field :comment %>
+            </div>
+          </div>
+          <div class="span3">
             <div class="field">
               <!--%= f.label :reader_id %-->
               <!--%= f.number_field :reader_id, value: current_user.id, readonly: true %-->
@@ -181,11 +193,12 @@
             </div>
             <div class="actions">
               <!--%= f.submit %-->
-              <%= f.submit "Отклонить", class: "btn btn-large btn-primary" %>
+              <!--%= f.submit "Отклонить", class: "btn btn-large btn-primary" %-->
+              <%= f.submit "Отклонить", class: "btn btn-large btn-danger" %>
             </div>
+          </div>
         <% end %>
     <% end %>
-  </div>
 </div>
 
 <% if find_me? %>

@@ -83,11 +83,11 @@
     </div>
 
   <br>
+    <p>
+      <strong>Данные подключения:</strong>
+    </p>
     <div class="row">
       <div class="span5">
-        <p>
-          <strong>Данные подключения:</strong>
-        </p>
         <div class="field">
           <%= f.label :connection_date %>
           <!--%= f.datetime_select :connection_date %-->
@@ -106,6 +106,8 @@
       </div>
       <div class="span5">
         <div class="field">
+          <%= f.label :comment %>
+          <%= f.text_field :comment %>
         </div>
         <div class="field">
         </div>
@@ -210,11 +212,35 @@
       </div>
     </div>
 
-  <div class="actions">
-    <!--%= f.submit %-->
-    <%= f.submit t('Save changes'), class: "btn btn-large btn-primary" %>
-  </div>
+    <br>
+    <div class="actions">
+      <!--%= f.submit %-->
+      <%= f.submit t('Save changes'), class: "btn btn-large btn-primary" %>
+    </div>
 
+    <br>
+    <div
+        <% if @order.order_status == "Новая" %> hidden <% end %>
+    class="row">
+      <div class="span5">
+        <div class="field">
+          <%= f.label :order_status_new %>
+          <!--%= f.text_field :order_status %-->
+          <!--%= f.text_field :order_status, readonly: true %-->
+          <%= f.text_field :order_status, value: "Новая", readonly: true %>
+        </div>
+      </div>
+      <div class="span1">
+      </div>
+      <div class="span5">
+        <div class="field">
+          <%= f.label :order_status_cur %>
+          <!--%= f.text_field :order_status %-->
+          <!--%= f.text_field :order_status, readonly: true %-->
+          <%= f.text_field :order_status_cur, value: @order.order_status, readonly: true %>
+        </div>
+      </div>
+    </div>
 
     <div hidden class="row">
       <div class="span5">
@@ -250,10 +276,10 @@
           <%= f.number_field :reader_id, readonly: true %>
         </div>
         <div class="field">
-          <%= f.label :order_status %>
+          <!--%= f.label :order_status %-->
           <!--%= f.text_field :order_status %-->
           <!--%= f.text_field :order_status, value: "Новая", readonly: true %-->
-          <%= f.text_field :order_status, readonly: true %>
+          <--%= f.text_field :order_status, readonly: true %-->
         </div>
       </div>
     </div>

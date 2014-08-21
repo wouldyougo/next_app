@@ -82,9 +82,13 @@ en:
         address:                    "Адрес подключения"
         phone:                      "Телефон домашний"
         phone_mobile:               "Телефон сотовый"
-        order_status:               "Статус заявки: Новая / Принята / Отклонена"
         contract_date:              "Дата продажи"
+        order_status:               "Статус заявки"
 
+        order_status_new:           "Статус заявки после сохранения"
+        order_status_cur:           "Статус заявки текуший"
+
+        comment:                    "Комментарий"
         connection_date:            "Предполагаемая дата подключения"
         inet_tariff_plan:           "Тарифный план ШПД"
         inet_device_contract:       "Оборудование: продажа/рассрочка/аренда"
