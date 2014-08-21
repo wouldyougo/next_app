@@ -20,17 +20,8 @@
 </p>
 
 <p>
-  <strong>email:</strong>
+  <strong>Email:</strong>
   <%= @user.email %>
-</p>
-
-<p>
-  <strong>reader:</strong>
-  <%= @user.reader %>
-</p>
-<p>
-  <strong>admin:</strong>
-  <%= @user.admin %>
 </p>
 
 <% if current_user?(@user)%>
@@ -45,6 +36,24 @@
   <strong>Создано заявок:</strong>
   <%= @user.orders.count %>
 </p>
+
+<p>
+  <strong>Права пользователя:</strong>
+</p>
+<p>
+  <strong>Активирован:</strong>
+  <%= @user.active %>
+</p>
+<p>
+  <strong>Проверяющий:</strong>
+  <%= @user.reader %>
+</p>
+<p>
+  <strong>Администратор:</strong>
+  <%= @user.admin %>
+</p>
+
+
 
 
 

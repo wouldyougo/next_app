@@ -24,20 +24,22 @@
     <%= order.user.name %>
   </span>
   <span class="content">
-    <strong>Проверяющий:</strong>
-    <%= reader_name order %>
-    <strong>Дата продажи:</strong>
-    <%= order.contract_date %>
-  </span>
-  <span class="content">
     <strong>Дата подключения:</strong>
     <%= order.connection_date %>
   </span>
   <span class="content">
     <strong>ФИО абонента:</strong>
     <%= order.abonent %>
-    <strong>Адрес подключения:</strong>
-    <%= order.address %>
+  </span>
+  <span class="content">
+      <strong>Адрес подключения:</strong>
+      <%= order.address %>
+  </span>
+  <span class="content">
+    <strong>Проверяющий:</strong>
+    <%= reader_name order %>
+    <strong>Дата продажи:</strong>
+    <%= order.contract_date %>
   </span>
 
   <span class="timestamp">
@@ -47,6 +49,7 @@
     <%= order.updated_at %>
   </span>
 
+  <span class="content">
   <span class="timestamp">
     <strong>Order_id:</strong>
     <%= order.id %>
@@ -54,5 +57,6 @@
     <%= order.user_id %>
     <strong>Reader_id:</strong>
     <%= order.reader_id %>
+  </span>
   </span>
 </li>

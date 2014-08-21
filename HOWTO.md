@@ -409,3 +409,32 @@ Action Mailer теперь использует гем Mail,
     rake time:zones:all                     # Displays all time zones, also available: time:zones:us, time:zones:local -- filter with OFFSET parameter, e.g., OFFSET=-6
     rake tmp:clear                          # Clear session, cache, and socket files from tmp/ (narrow w/ tmp:sessions:clear, tmp:cache:clear, tmp:sockets:clear)
     rake tmp:create                         # Creates tmp directories for sessions, cache, sockets, and pids
+
+### типы данных в rails generate scaffold
+    rails generate scaffold ModelName [field:type, field:type]
+
+    Rails	    db2	            mysql	        openbase	    Oracle
+    :binary	    blob(32678)	    blob	        object	        blob
+    :boolean	decimal(1)	    tinyint(1)	    boolean	        number(10)
+    :date	    date	        date	        date	        date
+    :datetime	timestamp	    datetime	    datetime	    date
+    :decimal	decimal	        decimal	        decimal	        decimal
+    :float	    float	        float	        float	        number
+    :integer	int	            int(11)	        integer	        number(38)
+    :string	    varchar(255)	varchar(255)	char(4096)	    varchar2(255)
+    :text	    clob(32768)	    text	        text	        clob
+    :time	    time	        time	        time	        date
+    :timestamp	timestamp	    datetime	    timestamp	    date
+
+    Rails	    postgresql	    sqlite	        sqlserver	    Sybase
+    :binary	    bytea	        blob	        image	        image
+    :boolean	boolean	        boolean	        bit	            bit
+    :date	    date	        date	        datetime	    datetime
+    :datetime	timestamp	    datetime	    datetime	    datetime
+    :decimal	decimal	        decimal	        decimal	        decimal
+    :float	    float	        float	        float(8)	    float(8)
+    :integer	integer	        integer	        int	            int
+    :string     *               varchar(255)	varchar(255)	varchar(255)
+    :text	    text	        text	        text	        text
+    :time	    time	        datetime	    datetime	    time
+    :timestamp	timestamp	    datetime        datetime	    timestamp

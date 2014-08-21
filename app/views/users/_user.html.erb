@@ -8,13 +8,51 @@
 <% end %>
 
 <li>
-  <%= gravatar_for user, size: 52 %>
-  <%= link_to user.name, user %>
-    | <%= user.email %>
-  
-  <%# delete доступен для админа и не для своей записи %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
+  <!--%= gravatar_for user, size: 52 %-->
+
+  <span class="content">
+    <%= link_to "Профиль", user %>
+    <%# delete доступен для админа и не для своей записи %>
+    <% if current_user.admin? && !current_user?(user) %>
+    |   <%= link_to "Удалить", user, method: :delete, data: { confirm: "Удалить пользователя?" } %>
+    <% end %>
+  </span>
+
+  <span class="content">
+    <strong>Оператор:</strong>
+    <%= user.name %>
+    <strong>email:</strong>
+    <%= user.email %>
+  </span>
+
+  <span class="content">
+    <strong>Создано заявок:</strong>
+    <%= user.orders.count %>
+  </span>
+
+  <span class="content">
+    <strong>Активирован:</strong>
+    <%= user.active %>
+    |
+    <strong>Проверяющий:</strong>
+    <%= user.reader %>
+    |
+    <strong>Администратор:</strong>
+    <%= user.admin %>
+  </span>
+
+  <span class="timestamp">
+    <strong>created_at:</strong>
+    <%= user.created_at %>
+    <strong>updated_at:</strong>
+    <%= user.updated_at %>
+    <strong>user_id:</strong>
+    <%= user.id %>
+  </span>
+
+  <span class="content">
+
+  </span>
+
+
 </li>
