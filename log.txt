@@ -227,6 +227,9 @@ bundle exec rake db:populate
 bundle exec rake db:drop:all
 bundle exec rake db:create:all
 
+
+bundle exec rake db:reset RAILS_ENV=staging
+
 bundle exec rake db:drop RAILS_ENV=staging
 bundle exec rake db:create RAILS_ENV=staging
 bundle exec rake db:migrate RAILS_ENV=staging
