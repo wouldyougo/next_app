@@ -39,8 +39,8 @@
 ### Работа в отдельной ветке
 При использовании Git, хорошей практикой является делать изменения в отдельной ветке,
 а не в master ветке. Перешел к новой ветке 'static-pages':
+    
     git checkout -b static-pages
-
     git add .
     git commit -m "Finish static pages"
 
@@ -57,6 +57,7 @@
 Первый шаг это регистрация на Heroku;
 после подтверждения вашего email для завершения создания вашего аккаунта,
 установите необходимый для Heroku софт с помощью Heroku Toolbelt:
+    
     wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
     $ heroku login
